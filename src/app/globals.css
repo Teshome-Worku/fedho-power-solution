@@ -50,32 +50,34 @@
 
 :root {
   --background: oklch(0.99 0.005 250);
-  --foreground: oklch(0.22 0.03 252);
+  --foreground: oklch(0.18 0.03 252);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.02 250);
+  --card-foreground: oklch(0.18 0.02 250);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.02 250);
-  --primary: oklch(0.35 0.1 252);
+  --popover-foreground: oklch(0.18 0.02 250);
+  --primary: oklch(0.32 0.1 252);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.965 0.01 250);
-  --secondary-foreground: oklch(0.35 0.1 252);
-  --muted: oklch(0.955 0.006 250);
-  --muted-foreground: oklch(0.46 0.02 250);
+  --secondary-foreground: oklch(0.32 0.1 252);
+  --muted: oklch(0.96 0.006 250);
+  --muted-foreground: oklch(0.44 0.02 250);
   --accent: oklch(0.72 0.18 50);
   --accent-foreground: oklch(0.985 0 0);
-  --brand-blue: oklch(0.35 0.1 252);
+  --brand-blue: oklch(0.32 0.1 252);
+  --brand-blue-light: oklch(0.45 0.12 252);
   --brand-orange: oklch(0.72 0.18 50);
+  --brand-orange-light: oklch(0.82 0.14 55);
   --brand-gray: oklch(0.55 0.01 250);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
+  --border: oklch(0.93 0 0);
+  --input: oklch(0.93 0 0);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
+  --radius: 0.75rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -127,9 +129,6 @@
 
   body {
     @apply bg-background text-foreground;
-    background-image:
-      radial-gradient(circle at 15% 8%, color-mix(in oklch, var(--brand-orange), transparent 87%), transparent 26%),
-      radial-gradient(circle at 78% 0%, color-mix(in oklch, var(--brand-blue), transparent 90%), transparent 40%);
   }
 
   html {
@@ -142,4 +141,195 @@
   h4 {
     font-family: var(--font-heading);
   }
+}
+
+/* ===== Hero Animations ===== */
+@keyframes kenBurns {
+  0% {
+    transform: scale(1.0);
+  }
+  100% {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-80px) translateX(20px);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-ken-burns {
+  animation: kenBurns 20s ease-in-out infinite alternate;
+}
+
+.animate-hero-float {
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ===== Timeline Styles ===== */
+.timeline-line {
+  position: relative;
+}
+
+.timeline-line::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--brand-orange),
+    var(--brand-blue),
+    var(--brand-orange)
+  );
+}
+
+@media (min-width: 768px) {
+  .timeline-line::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* ===== Masonry Grid ===== */
+.masonry-grid {
+  columns: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-grid {
+    columns: 3;
+  }
+}
+
+.masonry-grid > * {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+/* ===== Premium Card Hover ===== */
+.premium-card {
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.premium-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 60px -12px rgba(0, 0, 0, 0.12),
+    0 8px 20px -8px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Frosted Glass ===== */
+.glass {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+}
+
+/* ===== Energy Particles ===== */
+.energy-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--brand-orange);
+  box-shadow: 0 0 8px var(--brand-orange), 0 0 20px var(--brand-orange);
+  animation: particleFloat 5s ease-in-out infinite;
+}
+
+/* ===== Gradient Text ===== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--brand-orange), var(--brand-orange-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Section Divider ===== */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border),
+    transparent
+  );
 }

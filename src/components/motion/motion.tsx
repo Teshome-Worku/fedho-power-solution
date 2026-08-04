@@ -4,6 +4,7 @@ import {
   motion,
   useInView,
   useReducedMotion,
+  AnimatePresence,
   type HTMLMotionProps,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -14,6 +15,7 @@ type FadeInProps = Omit<HTMLMotionProps<"div">, "children"> & {
   children: React.ReactNode;
   delay?: number;
   direction?: "up" | "down" | "left" | "right" | "none";
+  duration?: number;
 };
 
 export function FadeIn({
@@ -21,23 +23,20 @@ export function FadeIn({
   className,
   delay = 0,
   direction = "up",
+  duration = 0.6,
   ...props
 }: FadeInProps) {
   const reduceMotion = useReducedMotion();
   const offsets = {
-    up: { y: 24, x: 0 },
-    down: { y: -24, x: 0 },
-    left: { x: 24, y: 0 },
-    right: { x: -24, y: 0 },
+    up: { y: 40, x: 0 },
+    down: { y: -40, x: 0 },
+    left: { x: 40, y: 0 },
+    right: { x: -40, y: 0 },
     none: { x: 0, y: 0 },
   };
 
   if (reduceMotion) {
-    return (
-      <div className={className}>
-        {children}
-      </div>
-    );
+    return <div className={className}>{children}</div>;
   }
 
   return (
@@ -45,9 +44,37 @@ export function FadeIn({
       initial={{ opacity: 0, ...offsets[direction] }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
       {...props}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function ScaleIn({
+  children,
+  className,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.85 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={className}
     >
       {children}
     </motion.div>
@@ -67,7 +94,7 @@ export function AnimatedCounter({
   prefix = "",
   suffix = "",
   className,
-  duration = 1.5,
+  duration = 2,
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
@@ -82,7 +109,7 @@ export function AnimatedCounter({
 
     const tick = (now: number) => {
       const progress = Math.min((now - startTime) / (duration * 1000), 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
+      const eased = 1 - Math.pow(1 - progress, 4);
       start = Math.round(value * eased);
       setDisplay(start);
       if (progress < 1) requestAnimationFrame(tick);
@@ -120,7 +147,7 @@ export function StaggerContainer({
       viewport={{ once: true, margin: "-60px" }}
       variants={{
         hidden: {},
-        visible: { transition: { staggerChildren: 0.1 } },
+        visible: { transition: { staggerChildren: 0.12 } },
       }}
       className={className}
     >
@@ -145,13 +172,104 @@ export function StaggerItem({
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, y: 30 },
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+          transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
         },
       }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function HeroImageSlider({
+  images,
+  interval = 7000,
+}: {
+  images: { src: string; alt: string }[];
+  interval?: number;
+}) {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, interval);
+    return () => clearInterval(timer);
+  }, [images.length, interval]);
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={current}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
+        className="absolute inset-0"
+      >
+        <div
+          className="absolute inset-0 animate-ken-burns bg-cover bg-center"
+          style={{ backgroundImage: `url(${images[current].src})` }}
+          role="img"
+          aria-label={images[current].alt}
+        />
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+export function EnergyParticles() {
+  const particles = Array.from({ length: 12 }, (_, i) => ({
+    id: i,
+    left: `${10 + Math.random() * 80}%`,
+    top: `${20 + Math.random() * 60}%`,
+    delay: `${Math.random() * 5}s`,
+    size: 3 + Math.random() * 4,
+    duration: `${4 + Math.random() * 4}s`,
+  }));
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      {particles.map((p) => (
+        <div
+          key={p.id}
+          className="energy-particle"
+          style={{
+            left: p.left,
+            top: p.top,
+            width: p.size,
+            height: p.size,
+            animationDelay: p.delay,
+            animationDuration: p.duration,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+export function ParallaxSection({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: false, margin: "-20%" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0.8 }}
+      animate={isInView ? { opacity: 1 } : { opacity: 0.8 }}
+      transition={{ duration: 0.8 }}
       className={className}
     >
       {children}
