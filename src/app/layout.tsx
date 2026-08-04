@@ -39,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <Navbar />
-        <main id="main-content" className="flex-1 pt-16">
+        <main id="main-content" className="flex-1 pt-[72px]">
           {children}
         </main>
         <Footer />
