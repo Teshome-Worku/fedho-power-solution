@@ -6,6 +6,7 @@ type SectionHeaderProps = {
   description?: string;
   align?: "left" | "center";
   className?: string;
+  dark?: boolean;
 };
 
 export function SectionHeader({
@@ -14,25 +15,35 @@ export function SectionHeader({
   description,
   align = "center",
   className,
+  dark = false,
 }: SectionHeaderProps) {
   return (
     <div
       className={cn(
-        "mb-10 max-w-3xl",
+        "mb-14 max-w-3xl",
         align === "center" && "mx-auto text-center",
         className,
       )}
     >
       {eyebrow ? (
-        <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-[var(--brand-orange)]">
+        <p className={cn(
+          "mb-4 text-xs font-bold uppercase tracking-[0.2em]",
+          dark ? "text-[var(--brand-orange-light)]" : "text-[var(--brand-orange)]",
+        )}>
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
+      <h2 className={cn(
+        "text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]",
+        dark ? "text-white" : "text-primary",
+      )}>
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+        <p className={cn(
+          "mt-5 text-lg leading-relaxed",
+          dark ? "text-white/70" : "text-muted-foreground",
+        )}>
           {description}
         </p>
       ) : null}
@@ -52,10 +63,10 @@ export function Section({
   containerClassName?: string;
 }) {
   return (
-    <section id={id} className={cn("py-16 sm:py-24", className)}>
+    <section id={id} className={cn("py-20 sm:py-28", className)}>
       <div
         className={cn(
-          "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8",
+          "mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8",
           containerClassName,
         )}
       >
@@ -69,24 +80,30 @@ export function PageHero({
   title,
   description,
   eyebrow,
+  image,
 }: {
   title: string;
   description?: string;
   eyebrow?: string;
+  image?: string;
 }) {
   return (
-    <div className="border-b bg-gradient-to-br from-primary/5 via-background to-[var(--brand-orange)]/5 py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="relative overflow-hidden bg-gradient-to-br from-primary/[0.03] via-background to-[var(--brand-orange)]/[0.04] py-20 sm:py-28">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--brand-orange)]/[0.04] rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" aria-hidden="true" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/[0.03] rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" aria-hidden="true" />
+
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {eyebrow ? (
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-[var(--brand-orange)]">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--brand-orange)]">
             {eyebrow}
           </p>
         ) : null}
-        <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-primary sm:text-5xl">
+        <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-primary sm:text-5xl lg:text-6xl lg:leading-[1.1]">
           {title}
         </h1>
         {description ? (
-          <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
             {description}
           </p>
         ) : null}
