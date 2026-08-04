@@ -88,7 +88,7 @@ export function PageHero({
   image?: string;
 }) {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-primary/[0.03] via-background to-[var(--brand-orange)]/[0.04] py-20 sm:py-28">
+    <div className="relative overflow-hidden bg-gradient-to-br from-primary/[0.03] via-background to-[var(--brand-orange)]/[0.04] pt-[calc(72px+4rem)] pb-16 sm:pt-[calc(72px+5rem)] sm:pb-24">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--brand-orange)]/[0.04] rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" aria-hidden="true" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/[0.03] rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" aria-hidden="true" />

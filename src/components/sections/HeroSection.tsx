@@ -17,7 +17,7 @@ const heroImages = [
 
 export function HeroSection() {
   return (
-    <section className="relative isolate overflow-hidden min-h-[90vh] flex items-center">
+    <section className="relative isolate overflow-hidden min-h-screen flex items-center">
       {/* Background image slider with Ken Burns */}
       <HeroImageSlider images={heroImages} interval={7000} />
 
@@ -32,7 +32,7 @@ export function HeroSection() {
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[var(--brand-orange)]/15 rounded-full blur-[120px] animate-glow-pulse" aria-hidden="true" />
       <div className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-white/5 rounded-full blur-[100px]" aria-hidden="true" />
 
-      <div className="relative mx-auto flex w-full max-w-7xl items-center px-5 py-32 sm:px-6 lg:px-8">
+      <div className="relative mx-auto flex w-full max-w-7xl items-center px-5 pt-[calc(72px+4rem)] pb-24 sm:px-6 lg:px-8">
         <FadeIn className="max-w-2xl" direction="up" duration={0.8}>
           <Badge className="mb-6 rounded-full bg-white/10 text-white/90 border border-white/20 px-4 py-1.5 text-xs font-semibold backdrop-blur-sm">
             🇪🇹 Designed & Manufactured in Ethiopia
