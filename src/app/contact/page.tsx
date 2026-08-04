@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Building2, Facebook, Linkedin, Mail, MapPin, Phone, Send, Video } from "lucide-react";
+import { Building2, Share2, Link2, Play, Mail, MapPin, Phone, Send } from "lucide-react";
 
 import { FadeIn } from "@/components/motion/motion";
 import { PageHero, Section } from "@/components/shared/section";
@@ -19,9 +19,9 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const socialIcons: Record<string, React.ElementType> = {
-  Facebook,
-  LinkedIn: Linkedin,
-  TikTok: Video,
+  Facebook: Share2,
+  LinkedIn: Link2,
+  TikTok: Play,
 };
 
 export default function ContactPage() {
