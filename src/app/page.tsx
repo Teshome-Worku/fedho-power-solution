@@ -379,21 +379,21 @@ export default function HomePage() {
           />
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--brand-orange)] via-primary/30 to-[var(--brand-orange)] md:left-1/2 md:-translate-x-px" aria-hidden="true" />
+            <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--brand-orange)] via-primary/20 to-[var(--brand-orange)] md:left-1/2 md:-translate-x-px" aria-hidden="true" />
 
-            <div className="space-y-10">
+            <div className="space-y-12">
               {timeline.map((event, i) => (
                 <FadeIn key={`${event.period}-${event.title}`} delay={i * 0.08} direction={i % 2 === 0 ? "left" : "right"}>
                   <div className={`relative flex gap-6 md:gap-12 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
                     {/* Dot */}
-                    <div className="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-2 z-10">
-                      <div className="w-3 h-3 rounded-full bg-[var(--brand-orange)] ring-4 ring-background" />
+                    <div className="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-3 z-10">
+                      <div className="w-4 h-4 rounded-full bg-[var(--brand-orange)] ring-4 ring-background shadow-lg shadow-[var(--brand-orange)]/30" />
                     </div>
                     {/* Content */}
-                    <div className={`ml-14 md:ml-0 md:w-[calc(50%-2rem)] ${i % 2 === 0 ? "md:text-right md:pr-4" : "md:text-left md:pl-4"}`}>
-                      <p className="text-xs font-bold uppercase tracking-wider text-[var(--brand-orange)]">{event.period}</p>
-                      <h3 className="mt-1 text-base font-bold text-primary">{event.title}</h3>
-                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{event.description}</p>
+                    <div className={`ml-14 md:ml-0 md:w-[calc(50%-2rem)] rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 ${i % 2 === 0 ? "md:text-right md:mr-auto" : "md:text-left md:ml-auto"}`}>
+                      <p className="text-xs font-bold uppercase tracking-widest text-[var(--brand-orange)]">{event.period}</p>
+                      <h3 className="mt-2 text-lg font-extrabold text-primary tracking-tight">{event.title}</h3>
+                      <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{event.description}</p>
                     </div>
                   </div>
                 </FadeIn>
@@ -558,16 +558,16 @@ export default function HomePage() {
               ))}
             </Accordion>
           </FadeIn>
-          <div className="mt-8 text-center">
+          <div className="mt-12 text-center">
             <Button
               nativeButton={false}
               render={<Link href="/faq" />}
               variant="outline"
-              className="rounded-xl"
+              className="group rounded-xl shadow-sm hover:shadow-md hover:border-[var(--brand-orange)]/30 transition-all duration-300"
               size="lg"
             >
               View All FAQs
-              <ArrowRight className="size-4" />
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>
         </div>
@@ -575,34 +575,39 @@ export default function HomePage() {
       </section>
 
       {/* ===== CTA ===== */}
-      <Section className="pt-0 pb-20">
+      <Section className="pt-0 pb-28">
         <ScaleIn>
-          <div className="relative overflow-hidden mx-auto max-w-6xl rounded-3xl bg-[var(--brand-blue)] px-8 py-16 text-white sm:px-14">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-[var(--brand-orange)]/10 rounded-full blur-3xl" aria-hidden="true" />
-            <div className="relative">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <div className="relative overflow-hidden mx-auto max-w-6xl rounded-[2rem] bg-gradient-to-br from-[var(--brand-blue)] via-[var(--brand-blue)] to-[#0a1628] px-8 py-20 text-white sm:px-16 sm:py-24 shadow-2xl shadow-primary/20">
+            {/* Decorative glows */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--brand-orange)]/15 rounded-full blur-[100px]" aria-hidden="true" />
+            <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-[80px]" aria-hidden="true" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--brand-orange)]/5 rounded-full blur-[120px]" aria-hidden="true" />
+            <div className="relative max-w-2xl">
+              <p className="text-xs font-bold uppercase tracking-widest text-[var(--brand-orange)] mb-6">Get Started</p>
+              <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl leading-tight">
                 Ready to discuss your power requirements?
               </h2>
-              <p className="mt-4 max-w-2xl text-white/75 text-lg">
+              <p className="mt-6 max-w-xl text-white/70 text-lg leading-relaxed">
                 Request a consultation to identify the right FP Hybrid Generator capacity for your site.
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Button
                   nativeButton={false}
                   render={<Link href="/contact" />}
                   size="lg"
-                  className="rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-xl hover:brightness-110"
+                  className="group rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-xl shadow-[var(--brand-orange)]/30 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/50 transition-all duration-300 font-bold"
                 >
                   Request a Quote
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </Button>
                 <Button
                   nativeButton={false}
                   render={<Link href="/products" />}
                   size="lg"
-                  className="rounded-xl bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20"
+                  className="group rounded-xl bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-sm font-semibold"
                 >
                   Compare Product Series
-                  <ArrowRight className="size-4" />
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </div>
             </div>
