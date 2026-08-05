@@ -33,7 +33,7 @@ export function Footer() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* Top CTA Banner */}
         <div className="border-b border-white/10 py-16 sm:py-20">
-          <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col items-center text-center gap-8 lg:flex-row lg:items-center lg:justify-between lg:text-left">
             <div>
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
                 Ready to power your future?
@@ -53,7 +53,7 @@ export function Footer() {
         </div>
 
         {/* Main Footer Grid */}
-        <div className="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4 text-center lg:text-left">
           {/* Brand */}
           <div className="space-y-5">
             <div className="flex items-center gap-3">
@@ -77,7 +77,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="lg:text-left">
             <h3 className="mb-5 text-xs font-bold uppercase tracking-widest text-white/40">
               Quick Links
             </h3>
@@ -104,7 +104,7 @@ export function Footer() {
           </div>
 
           {/* Products */}
-          <div>
+          <div className="lg:text-left">
             <h3 className="mb-5 text-xs font-bold uppercase tracking-widest text-white/40">
               Products
             </h3>
@@ -126,7 +126,7 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
+          <div className="lg:text-left">
             <h3 className="mb-5 text-xs font-bold uppercase tracking-widest text-white/40">
               Contact
             </h3>
@@ -143,7 +143,7 @@ export function Footer() {
             </address>
 
             {/* Social */}
-            <div className="mt-6 flex gap-3">
+            <div className="mt-6 flex gap-3 justify-center lg:justify-start">
               {contactInfo.social.map((item) => {
                 const Icon = item.platform === "Facebook" ? FacebookIcon : 
                              item.platform === "LinkedIn" ? LinkedinIcon : 
@@ -170,7 +170,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 py-6 flex flex-col gap-3 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+        <div className="border-t border-white/10 py-6 flex flex-col gap-3 text-xs text-white/45 items-center text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <p>
             © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
