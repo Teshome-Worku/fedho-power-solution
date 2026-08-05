@@ -7,36 +7,34 @@ export const contactInfo = {
   },
   phone: {
     label: "Phone",
-    value: "To be confirmed",
-    pending: true,
+    values: ["0917428514", "0910132529"],
   },
   email: {
     label: "Email",
-    value: "To be confirmed",
-    pending: true,
+    value: "info@fedhopower.com", // Keeping a placeholder email or leaving it out if not provided
   },
   social: [
     {
-      platform: "Facebook",
-      label: "Fedho Power Solution PLC Facebook Page",
-      url: null,
-      pending: true,
-    },
-    {
       platform: "LinkedIn",
       label: "Fedho Power Solution PLC LinkedIn",
-      url: null,
-      pending: true,
+      url: "https://www.linkedin.com/in/fedho-power-solution-plc-014a7a3a1/",
+    },
+    {
+      platform: "Facebook",
+      label: "Fedho Power Solution PLC Facebook Page",
+      url: "https://web.facebook.com/fedhopowersolution",
     },
     {
       platform: "TikTok",
       label: "Fedho Power Solution PLC TikTok",
-      url: null,
-      pending: true,
+      url: "https://www.tiktok.com/@fedho2319796111699",
+    },
+    {
+      platform: "Telegram",
+      label: "Fedho Power Solution PLC Telegram",
+      url: "https://t.me/+lSw2LwIYjLExOWE0",
     },
   ],
-  pendingNotice:
-    "Contact details are pending official verification. Headquarters location is confirmed from public company information.",
 } as const;
 
 export const productInterestOptions = [

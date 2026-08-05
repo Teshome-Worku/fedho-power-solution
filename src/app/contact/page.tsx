@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Building2, Share2, Link2, Play, Mail, MapPin, Phone, Send } from "lucide-react";
+import { Building2, Mail, MapPin, Phone, Send } from "lucide-react";
 
+import { FacebookIcon, LinkedinIcon, TiktokIcon, TelegramIcon } from "@/components/ui/social-icons";
 import { FadeIn } from "@/components/motion/motion";
 import { PageHero, Section } from "@/components/shared/section";
 import { Button } from "@/components/ui/button";
@@ -19,9 +20,10 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const socialIcons: Record<string, React.ElementType> = {
-  Facebook: Share2,
-  LinkedIn: Link2,
-  TikTok: Play,
+  Facebook: FacebookIcon,
+  LinkedIn: LinkedinIcon,
+  TikTok: TiktokIcon,
+  Telegram: TelegramIcon,
 };
 
 export default function ContactPage() {
@@ -63,7 +65,9 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">Phone</p>
-                      <p className="text-sm text-foreground">{contactInfo.phone.value}</p>
+                      {contactInfo.phone.values.map((phone) => (
+                        <p key={phone} className="text-sm text-foreground">{phone}</p>
+                      ))}
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -76,9 +80,6 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-                <p className="mt-5 rounded-xl bg-secondary/50 p-3 text-xs text-muted-foreground leading-relaxed">
-                  {contactInfo.pendingNotice}
-                </p>
               </div>
 
               {/* Social */}
@@ -88,13 +89,16 @@ export default function ContactPage() {
                   {contactInfo.social.map((item) => {
                     const Icon = socialIcons[item.platform] || Building2;
                     return (
-                      <div
+                      <Link
                         key={item.platform}
-                        className="flex items-center justify-center w-11 h-11 rounded-xl bg-secondary/60 text-muted-foreground cursor-default transition-colors hover:bg-secondary"
-                        title={`${item.platform} — To be confirmed`}
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center w-11 h-11 rounded-xl bg-secondary/60 text-[var(--brand-orange)] transition-colors hover:bg-[var(--brand-orange)] hover:text-white"
+                        title={item.label}
                       >
                         <Icon className="size-5" />
-                      </div>
+                      </Link>
                     );
                   })}
                 </div>

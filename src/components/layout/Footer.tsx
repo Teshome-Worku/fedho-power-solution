@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { FacebookIcon, LinkedinIcon, TiktokIcon, TelegramIcon } from "@/components/ui/social-icons";
 import { contactInfo } from "@/content/contact";
 import { navLinks, siteConfig } from "@/content/navigation";
 import { productSeries } from "@/content/products";
@@ -120,19 +121,36 @@ export function Footer() {
               <p>
                 {contactInfo.headquarters.city}, {contactInfo.headquarters.country}
               </p>
+              <div className="pt-2">
+                {contactInfo.phone.values.map(phone => (
+                  <p key={phone}>{phone}</p>
+                ))}
+              </div>
             </address>
 
             {/* Social */}
             <div className="mt-6 flex gap-3">
-              {contactInfo.social.map((item) => (
-                <div
-                  key={item.platform}
-                  className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/8 text-white/60 text-xs font-bold transition-all hover:bg-white/15 hover:text-white cursor-default"
-                  title={item.platform}
-                >
-                  {item.platform.charAt(0)}
-                </div>
-              ))}
+              {contactInfo.social.map((item) => {
+                const Icon = item.platform === "Facebook" ? FacebookIcon : 
+                             item.platform === "LinkedIn" ? LinkedinIcon : 
+                             item.platform === "TikTok" ? TiktokIcon : 
+                             item.platform === "Telegram" ? TelegramIcon : null;
+                
+                if (!Icon) return null;
+
+                return (
+                  <Link
+                    key={item.platform}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 text-white/70 transition-all hover:bg-[var(--brand-orange)] hover:text-white"
+                    title={item.label}
+                  >
+                    <Icon className="size-4" />
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
