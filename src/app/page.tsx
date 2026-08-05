@@ -92,7 +92,7 @@ export default function HomePage() {
       <HeroSection />
 
       {/* ===== ABOUT — Image Left, Text Right ===== */}
-      <Section>
+      <Section id="about">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <FadeIn direction="left">
             <div className="relative">
