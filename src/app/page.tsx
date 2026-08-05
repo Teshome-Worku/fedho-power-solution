@@ -414,26 +414,29 @@ export default function HomePage() {
         <div className="grid gap-8 lg:grid-cols-2">
           {founders.map((founder, i) => (
             <FadeIn key={founder.name} delay={i * 0.15} direction={i === 0 ? "left" : "right"}>
-              <div className="premium-card group overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06]">
-                <div className="relative h-72 overflow-hidden">
+              <div className="premium-card group overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-700 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/5 hover:-translate-y-1">
+                <div className="relative h-[400px] overflow-hidden">
+                  <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700 z-10" />
                   <Image
                     src={founder.image}
                     alt={founder.imageAlt}
                     width={900}
                     height={600}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-5">
-                    <h3 className="text-lg font-bold text-white">{founder.name}</h3>
-                    <p className="text-sm text-white/80">{founder.role}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-20" />
+                  <div className="absolute bottom-8 left-8 z-30">
+                    <h3 className="text-3xl font-extrabold text-white tracking-tight">{founder.name}</h3>
+                    <p className="mt-2 text-sm font-semibold tracking-widest text-[var(--brand-orange)] uppercase">{founder.role}</p>
                   </div>
                 </div>
-                <div className="p-6">
-                  <p className="text-sm text-muted-foreground leading-relaxed">{founder.overview}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {founder.focus.slice(0, 4).map((f) => (
-                      <Badge key={f} variant="outline" className="text-xs rounded-lg">{f}</Badge>
+                <div className="p-8">
+                  <p className="text-base text-muted-foreground leading-relaxed">{founder.overview}</p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {founder.focus.map((f) => (
+                      <Badge key={f} variant="secondary" className="text-xs rounded-lg bg-secondary/50 hover:bg-secondary/70 text-foreground transition-colors px-3 py-1">
+                        {f}
+                      </Badge>
                     ))}
                   </div>
                 </div>
