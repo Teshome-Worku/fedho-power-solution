@@ -53,7 +53,7 @@ export default function FaqPage() {
 
           {/* Accordion */}
           <FadeIn delay={0.1}>
-            <Accordion type="single" collapsible className="space-y-4">
+            <Accordion className="space-y-4">
               {faqItems.map((item, i) => (
                 <AccordionItem
                   key={item.question}
