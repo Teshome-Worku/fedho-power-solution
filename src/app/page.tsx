@@ -3,14 +3,13 @@ import {
   BatteryCharging,
   Building2,
   CheckCircle2,
-  ChevronRight,
   Factory,
   GraduationCap,
   Heart,
   Home,
   Hotel,
   Landmark,
-  Leaf,
+
   Sun,
   Zap,
 } from "lucide-react";
@@ -59,7 +58,7 @@ import { productSeries } from "@/content/products";
 // siteConfig import removed; not used in this page
 import { stats } from "@/content/stats";
 import { systemFlow } from "@/content/technology";
-import { createOrgSchema, createPageMetadata } from "@/lib/seo";
+import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Fedho Power Solution PLC | Reliable Hybrid Power Solutions",
