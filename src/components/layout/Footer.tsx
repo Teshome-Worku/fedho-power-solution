@@ -50,7 +50,7 @@ export function Footer() {
                 className="rounded-xl object-cover ring-2 ring-white/10"
               />
               <div>
-                <p className="text-base font-bold">{siteConfig.shortName}</p>
+                <p className="text-base font-bold">Fedho Power Solution</p>
                 <p className="text-xs text-white/60 font-medium">
                   Clean Energy Technology
                 </p>
