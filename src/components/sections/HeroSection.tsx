@@ -21,9 +21,9 @@ export function HeroSection() {
       {/* Background image slider with Ken Burns */}
       <HeroImageSlider images={heroImages} interval={7000} />
 
-      {/* Gradient overlay — lighter than before so product is visible */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue)]/85 via-[var(--brand-blue)]/60 to-[var(--brand-blue)]/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-blue)]/60 via-transparent to-[var(--brand-blue)]/20" />
+      {/* Cinematic gradient overlay — dark on the left for text readability, fully transparent on the right to show the product */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue)]/95 via-[var(--brand-blue)]/60 sm:via-[var(--brand-blue)]/40 to-transparent sm:w-[85%]" />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[var(--brand-blue)]/80 via-[var(--brand-blue)]/10 to-transparent" />
 
       {/* Energy particles */}
       <EnergyParticles />
