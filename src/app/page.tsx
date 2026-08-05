@@ -245,9 +245,9 @@ export default function HomePage() {
             title="FP Generator Product Series"
             description="From residential backup to enterprise-scale infrastructure, FP Hybrid Generators are available from 2KW to 600KW."
           />
-          <StaggerContainer className="grid gap-6 md:grid-cols-2">
+          <StaggerContainer className="grid gap-6 md:grid-cols-2 auto-rows-fr">
             {productSeries.map((series) => (
-              <StaggerItem key={series.id}>
+              <StaggerItem key={series.id} className="h-full">
                 <div className="premium-card group relative overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/10 hover:ring-[var(--brand-orange)]/30 flex flex-col h-full">
                   <div className="relative h-64 overflow-hidden flex-none">
                     <Image
@@ -303,11 +303,11 @@ export default function HomePage() {
           title="Power for Homes, Businesses, and Institutions"
           description="Fedho serves customers with different operational and infrastructure requirements across Ethiopia."
         />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
           {applicationSegments.map((seg, i) => {
             const Icon = applicationIcons[seg.id] || Building2;
             return (
-              <FadeIn key={seg.id} delay={i * 0.08} className={i === 0 || i === 3 ? "lg:col-span-2" : ""}>
+              <FadeIn key={seg.id} delay={i * 0.08} className={`${i === 0 || i === 3 ? "lg:col-span-2" : ""} h-full`}>
                 <div className="premium-card group flex flex-col h-full overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/[0.08] hover:ring-black/[0.1]">
                   {seg.image ? (
                     <div className="relative h-56 overflow-hidden">
@@ -441,11 +441,11 @@ export default function HomePage() {
             title="Recognition and Public Trust"
             description="Fedho has received awards and recommendation letters from recognized programs and institutions."
           />
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3 auto-rows-fr">
             {awards.slice(0, 3).map((award, i) => (
               <FadeIn key={award.id} delay={i * 0.1}>
-                <div className="premium-card group overflow-hidden rounded-3xl bg-white shadow-md shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/10 hover:ring-[var(--brand-orange)]/30">
-                  <div className="relative h-60 overflow-hidden bg-primary/5 p-8 flex items-center justify-center">
+                <div className="premium-card group overflow-hidden rounded-3xl bg-white shadow-md shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/10 hover:ring-[var(--brand-orange)]/30 flex flex-col h-full">
+                  <div className="relative h-60 overflow-hidden bg-primary/5 p-8 flex-none flex items-center justify-center">
                     <Image
                       src={award.image}
                       alt={award.imageAlt}
@@ -454,7 +454,7 @@ export default function HomePage() {
                       className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-110 drop-shadow-xl"
                     />
                   </div>
-                  <div className="p-8">
+                  <div className="p-8 flex flex-col grow">
                     {award.year && (
                       <p className="text-xs font-bold tracking-widest text-[var(--brand-orange)] uppercase mb-2">{award.year}</p>
                     )}
