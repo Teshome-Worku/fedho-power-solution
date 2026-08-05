@@ -25,6 +25,14 @@ import {
   StaggerContainer,
   StaggerItem,
 } from "@/components/motion/motion";
+import {
+  AbstractCurve,
+  DiagonalCurve,
+  InvertedWave,
+  LayeredWave,
+  OrganicCurve,
+  SlantedDivider,
+} from "@/components/ui/dividers";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { Section, SectionHeader } from "@/components/shared/section";
 import {
@@ -95,17 +103,18 @@ export default function HomePage() {
       <Section id="about">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <FadeIn direction="left">
-            <div className="relative">
+            <div className="relative group">
+              <div className="absolute -inset-4 rounded-3xl bg-[var(--brand-orange)]/10 blur-2xl transition-all duration-500 group-hover:bg-[var(--brand-orange)]/20" aria-hidden="true" />
               <Image
                 src="/media/products_and_generators/products_with_fedesa_shuma.jpg"
                 alt="Fedesa Shuma with FP Hybrid Generators"
                 width={700}
                 height={500}
-                className="rounded-2xl object-cover shadow-2xl"
+                className="relative rounded-2xl object-cover shadow-2xl ring-1 ring-black/5"
               />
-              <div className="absolute -bottom-6 -right-6 hidden rounded-2xl bg-white p-5 shadow-xl ring-1 ring-black/5 lg:block">
-                <p className="text-3xl font-bold text-primary">2024</p>
-                <p className="text-sm text-muted-foreground">Founded</p>
+              <div className="absolute -bottom-6 -right-6 hidden rounded-2xl bg-white p-6 shadow-xl ring-1 ring-black/5 lg:block transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <p className="text-4xl font-extrabold text-primary tracking-tight">2024</p>
+                <p className="mt-1 text-sm font-semibold tracking-widest text-[var(--brand-orange)] uppercase">Founded</p>
               </div>
             </div>
           </FadeIn>
@@ -134,15 +143,16 @@ export default function HomePage() {
               <Button
                 nativeButton={false}
                 render={<Link href="/about" />}
-                className="mt-8 rounded-xl bg-primary text-white hover:bg-primary/90"
+                className="group mt-8 rounded-xl bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all duration-300"
                 size="lg"
               >
                 Learn Our Story
-                <ArrowRight className="size-4" />
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
           </FadeIn>
         </div>
+        <DiagonalCurve fill="var(--brand-blue)" />
       </Section>
 
       {/* ===== STATS — Full-width dark band ===== */}
@@ -159,27 +169,28 @@ export default function HomePage() {
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {stats.map((item, i) => (
               <FadeIn key={item.label} delay={i * 0.1}>
-                <div className="group rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10">
-                  <p className="text-4xl font-bold text-white sm:text-5xl">
+                <div className="group rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-[var(--brand-orange)]/30 hover:bg-white/10 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/10">
+                  <p className="text-4xl font-bold text-white sm:text-5xl tracking-tight">
                     <AnimatedCounter
                       value={item.value}
                       prefix={item.prefix}
                       suffix={item.suffix}
                     />
                   </p>
-                  <p className="mt-3 text-sm font-semibold text-white/90">{item.label}</p>
+                  <p className="mt-4 text-sm font-bold tracking-wide uppercase text-white/90">{item.label}</p>
                   {item.description ? (
-                    <p className="mt-1.5 text-xs text-white/50">{item.description}</p>
+                    <p className="mt-2 text-xs text-white/60 leading-relaxed">{item.description}</p>
                   ) : null}
                 </div>
               </FadeIn>
             ))}
           </div>
         </div>
+        <LayeredWave fill="var(--secondary)" className="opacity-30" />
       </section>
 
       {/* ===== TECHNOLOGY — Workflow Visualization ===== */}
-      <Section className="pb-10 sm:pb-16">
+      <Section className="pb-24 sm:pb-32 bg-secondary/30 relative">
         <SectionHeader
           eyebrow="Technology"
           title="How Hybrid Power Works"
@@ -187,26 +198,24 @@ export default function HomePage() {
         />
         <div className="relative">
           {/* Desktop flow */}
-          <div className="hidden lg:flex items-center justify-between gap-2 max-w-5xl mx-auto">
-            {systemFlow.map((step, i) => {
-              const Icon = flowIcons[i] || Zap;
-              return (
-                <FadeIn key={step.label} delay={i * 0.12} direction="up">
-                  <div className="flex items-center gap-4">
-                    <div className="flex flex-col items-center text-center group">
-                      <div className="flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/10 to-[var(--brand-orange)]/10 ring-1 ring-primary/10 transition-all duration-300 group-hover:shadow-xl group-hover:ring-[var(--brand-orange)]/30">
-                        <Icon className="size-8 text-primary group-hover:text-[var(--brand-orange)] transition-colors" />
+          <div className="hidden lg:block relative max-w-5xl mx-auto mt-8">
+            <div className="absolute top-10 left-12 right-12 h-0.5 bg-gradient-to-r from-transparent via-[var(--brand-orange)]/30 to-transparent dashed-line-animated" aria-hidden="true" />
+            <div className="flex items-start justify-between relative z-10">
+              {systemFlow.map((step, i) => {
+                const Icon = flowIcons[i] || Zap;
+                return (
+                  <FadeIn key={step.label} delay={i * 0.12} direction="up" className="relative w-40">
+                    <div className="flex flex-col items-center text-center group cursor-default">
+                      <div className="flex items-center justify-center w-20 h-20 rounded-2xl bg-white shadow-sm ring-1 ring-black/5 transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:ring-[var(--brand-orange)]/30 relative z-20">
+                        <Icon className="size-8 text-primary group-hover:text-[var(--brand-orange)] transition-colors duration-300" />
                       </div>
-                      <p className="mt-4 text-sm font-bold text-foreground">{step.label}</p>
-                      <p className="mt-1 text-xs text-muted-foreground max-w-[120px]">{step.description}</p>
+                      <p className="mt-6 text-sm font-extrabold text-foreground tracking-tight">{step.label}</p>
+                      <p className="mt-2 text-xs text-muted-foreground max-w-[140px] leading-relaxed">{step.description}</p>
                     </div>
-                    {i < systemFlow.length - 1 && (
-                      <ChevronRight className="size-6 text-[var(--brand-orange)]/50 shrink-0 mx-2" />
-                    )}
-                  </div>
-                </FadeIn>
-              );
-            })}
+                  </FadeIn>
+                );
+              })}
+            </div>
           </div>
           {/* Mobile flow */}
           <div className="flex flex-col gap-4 lg:hidden">
@@ -239,10 +248,11 @@ export default function HomePage() {
             <ArrowRight className="size-4" />
           </Button>
         </div>
+        <SlantedDivider fill="var(--background)" />
       </Section>
 
       {/* ===== PRODUCTS — Premium Cards ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-secondary/30 via-background to-background py-20 sm:py-28">
+      <section className="relative overflow-hidden bg-background py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Generator Categories"
@@ -299,10 +309,11 @@ export default function HomePage() {
             ))}
           </StaggerContainer>
         </div>
+        <OrganicCurve fill="hsl(var(--secondary))" className="opacity-20" />
       </section>
 
       {/* ===== APPLICATIONS — Grid with Icons + Images ===== */}
-      <Section>
+      <Section className="bg-secondary/20 relative pb-24 sm:pb-32">
         <SectionHeader
           eyebrow="Applications"
           title="Power for Homes, Businesses, and Institutions"
@@ -347,6 +358,7 @@ export default function HomePage() {
             );
           })}
         </div>
+        <InvertedWave fill="var(--background)" className="-scale-y-100 top-auto bottom-0" />
       </Section>
 
       {/* ===== TIMELINE — Company Story ===== */}
@@ -381,10 +393,11 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+        <AbstractCurve fill="var(--background)" className="rotate-180 -scale-x-100" />
       </section>
 
       {/* ===== FOUNDERS — Side by Side ===== */}
-      <Section>
+      <Section className="relative pb-24 sm:pb-32">
         <SectionHeader
           eyebrow="Leadership"
           title="Meet the Founders"
@@ -420,6 +433,7 @@ export default function HomePage() {
             </FadeIn>
           ))}
         </div>
+        <DiagonalCurve fill="hsl(var(--secondary))" className="opacity-20 -scale-x-100" />
       </Section>
 
       {/* ===== AWARDS ===== */}
@@ -467,10 +481,11 @@ export default function HomePage() {
             </Button>
           </div>
         </div>
+        <LayeredWave fill="var(--background)" className="-scale-x-100" />
       </section>
 
       {/* ===== INSTALLATIONS — Full width image band ===== */}
-      <Section>
+      <Section className="relative pb-24 sm:pb-32">
         <SectionHeader
           eyebrow="Installations"
           title="Verified Customer Installations"
@@ -495,6 +510,7 @@ export default function HomePage() {
             </FadeIn>
           ))}
         </div>
+        <OrganicCurve fill="hsl(var(--secondary))" className="opacity-20" />
       </Section>
 
       {/* ===== FAQ ===== */}
@@ -543,6 +559,7 @@ export default function HomePage() {
             </Button>
           </div>
         </div>
+        <AbstractCurve fill="var(--background)" />
       </section>
 
       {/* ===== CTA ===== */}
