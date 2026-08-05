@@ -59,9 +59,9 @@ export function Navbar() {
                 priority
               />
             </div>
-            <div className="hidden sm:block">
+            <div className="hidden lg:block whitespace-nowrap">
               <span className="block text-sm font-bold tracking-tight text-primary">
-                {siteConfig.shortName}
+                Fedho Power Solution
               </span>
               <span className="block text-[11px] font-medium text-muted-foreground/70">
                 Clean Energy Technology
