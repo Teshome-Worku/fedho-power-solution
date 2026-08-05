@@ -53,6 +53,8 @@ export const applicationSegments: ApplicationSegment[] = [
     ],
     description:
       "Reliable backup power for daily household appliances including TVs, refrigerators, laptops, and internet equipment.",
+    image: "/media/products_and_generators/product4.jpg",
+    imageAlt: "Residential hybrid generator",
   },
   {
     id: "commercial",
@@ -66,8 +68,8 @@ export const applicationSegments: ApplicationSegment[] = [
     ],
     description:
       "Uninterrupted operations for restaurants, hotels, workshops, and office buildings.",
-    image: "/media/customers/harme_clinic_partnership.jpg",
-    imageAlt: "Commercial customer partnership with Fedho Power Solution PLC",
+    image: "/media/products_and_generators/product1.jpg",
+    imageAlt: "Commercial FP Hybrid Generator",
   },
   {
     id: "industrial",
@@ -96,6 +98,8 @@ export const applicationSegments: ApplicationSegment[] = [
     needs: ["Reliable infrastructure", "Long-term sustainability", "Energy independence"],
     description:
       "Built for mission-critical infrastructure including government institutions and financial organizations.",
+    image: "/media/products_and_generators/product2_at_EDI.jpg",
+    imageAlt: "Government institution installation",
   },
   {
     id: "healthcare",

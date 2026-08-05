@@ -179,7 +179,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== TECHNOLOGY — Workflow Visualization ===== */}
-      <Section>
+      <Section className="pb-10 sm:pb-16">
         <SectionHeader
           eyebrow="Technology"
           title="How Hybrid Power Works"

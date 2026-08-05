@@ -36,14 +36,7 @@ export const awards: AwardItem[] = [
     imageAlt: "2025 Entrepreneurship Award certificate",
     year: "2025",
   },
-  {
-    id: "receiving-award",
-    title: "Award Ceremony",
-    description: "Receiving recognition for hybrid power innovation",
-    image: "/media/awards/receiveing_2025_award.jpg",
-    imageAlt: "Receiving 2025 award at ceremony",
-    year: "2025",
-  },
+
   {
     id: "ministry",
     title: "Ministry of Labor and Skills",
