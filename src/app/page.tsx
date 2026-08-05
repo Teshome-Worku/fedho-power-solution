@@ -248,8 +248,8 @@ export default function HomePage() {
           <StaggerContainer className="grid gap-6 md:grid-cols-2">
             {productSeries.map((series) => (
               <StaggerItem key={series.id}>
-                <div className="premium-card group relative overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/10 hover:ring-[var(--brand-orange)]/30">
-                  <div className="relative h-64 overflow-hidden">
+                <div className="premium-card group relative overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/10 hover:ring-[var(--brand-orange)]/30 flex flex-col h-full">
+                  <div className="relative h-64 overflow-hidden flex-none">
                     <Image
                       src={series.image}
                       alt={series.imageAlt}
@@ -262,7 +262,7 @@ export default function HomePage() {
                       {series.capacityRange}
                     </Badge>
                   </div>
-                  <div className="p-8">
+                  <div className="p-8 flex flex-col grow">
                     <h3 className="text-xl font-extrabold text-primary tracking-tight">{series.name}</h3>
                     <p className="mt-2 text-xs font-semibold tracking-widest text-[var(--brand-orange)] uppercase">
                       For {series.targetCustomer}
@@ -270,7 +270,7 @@ export default function HomePage() {
                     <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                       {series.description}
                     </p>
-                    <div className="mt-8 flex gap-4">
+                    <div className="mt-auto flex gap-4">
                       <Button
                         nativeButton={false}
                         render={<Link href="/contact" />}
