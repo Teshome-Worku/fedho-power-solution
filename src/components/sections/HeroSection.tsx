@@ -19,12 +19,12 @@ const heroImages = [
 
 export function HeroSection() {
   return (
-    <section className="relative isolate overflow-hidden min-h-screen flex items-center">
+    <section className="relative isolate overflow-hidden min-h-[80vh] sm:min-h-screen flex items-center">
       {/* Background image slider with Ken Burns */}
       <HeroImageSlider images={heroImages} interval={7000} />
 
       {/* Cinematic gradient overlay — dark on the left for text readability, fully transparent on the right to show the product */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue)]/95 via-[var(--brand-blue)]/60 sm:via-[var(--brand-blue)]/40 to-transparent sm:w-[85%]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue)]/70 sm:from-[var(--brand-blue)]/95 via-[var(--brand-blue)]/40 sm:via-[var(--brand-blue)]/60 to-transparent sm:w-[85%]" />
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[var(--brand-blue)]/80 via-[var(--brand-blue)]/10 to-transparent" />
 
       {/* Energy particles */}
@@ -51,7 +51,11 @@ export function HeroSection() {
           </FadeIn>
 
           <FadeIn direction="up" delay={0.6} duration={0.8}>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+            {/* Short summary for mobile, full description shown on larger screens */}
+            <p className="mt-4 block sm:hidden max-w-xl text-base leading-relaxed text-white/90">
+              Reliable, silent hybrid generators combining solar, battery storage, and grid charging.
+            </p>
+            <p className="mt-6 hidden sm:block max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
               {siteConfig.description}
             </p>
           </FadeIn>
@@ -80,7 +84,7 @@ export function HeroSection() {
 
           {/* Trust badges */}
           <FadeIn direction="up" delay={1.0} duration={0.8}>
-            <div className="mt-12 flex flex-wrap gap-x-6 gap-y-3">
+            <div className="mt-12 hidden sm:flex flex-wrap gap-x-6 gap-y-3">
               {[
                 "Made in Ethiopia",
                 "Silent Hybrid Technology",
