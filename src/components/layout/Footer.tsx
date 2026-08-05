@@ -145,11 +145,11 @@ export function Footer() {
             {/* Social */}
             <div className="mt-6 flex gap-3 justify-center lg:justify-start">
               {contactInfo.social.map((item) => {
-                const Icon = item.platform === "Facebook" ? FacebookIcon : 
-                             item.platform === "LinkedIn" ? LinkedinIcon : 
-                             item.platform === "TikTok" ? TiktokIcon : 
-                             item.platform === "Telegram" ? TelegramIcon : null;
-                
+                const Icon = item.platform === "Facebook" ? FacebookIcon :
+                  item.platform === "LinkedIn" ? LinkedinIcon :
+                    item.platform === "TikTok" ? TiktokIcon :
+                      item.platform === "Telegram" ? TelegramIcon : null;
+
                 if (!Icon) return null;
 
                 return (
