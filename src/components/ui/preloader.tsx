@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+// Use plain <img> here to avoid layout/hydration issues on slow mobile loads
 
 export function Preloader() {
   // Initialize from sessionStorage to avoid setting state synchronously in an effect
@@ -96,12 +96,13 @@ export function Preloader() {
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="relative w-24 h-24 rounded-2xl overflow-hidden shadow-2xl z-10 bg-white p-2"
               >
-                <Image
+                <img
                   src="/media/logo/logo.jpg"
                   alt="Fedho Power Solution PLC"
-                  fill
-                  className="object-contain"
-                  priority
+                  className="w-full h-full object-contain"
+                  width={96}
+                  height={96}
+                  decoding="async"
                 />
               </motion.div>
 
