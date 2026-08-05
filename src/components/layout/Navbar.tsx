@@ -40,9 +40,9 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+          "fixed inset-x-0 top-0 z-50 transition-all duration-300 transform-gpu",
           scrolled
-            ? "glass border-b border-white/20 shadow-lg shadow-black/[0.03]"
+            ? "bg-white/95 backdrop-blur-xl border-b border-white/20 shadow-md"
             : "bg-white/60 backdrop-blur-md border-b border-white/30",
         )}
       >
