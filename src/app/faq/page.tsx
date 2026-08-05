@@ -53,29 +53,27 @@ export default function FaqPage() {
 
           {/* Accordion */}
           <FadeIn delay={0.1}>
-            <div className="rounded-2xl bg-white ring-1 ring-black/[0.06] shadow-sm divide-y divide-border/60 overflow-hidden">
-              <Accordion>
-                {faqItems.map((item, i) => (
-                  <AccordionItem
-                    key={item.question}
-                    value={item.question}
-                    className="px-2 sm:px-4"
-                  >
-                    <AccordionTrigger className="text-left text-sm font-semibold text-foreground py-5 hover:text-[var(--brand-orange)] transition-colors">
-                      <span className="flex items-start gap-3">
-                        <span className="shrink-0 flex items-center justify-center w-6 h-6 rounded-lg bg-[var(--brand-orange)]/10 text-xs font-bold text-[var(--brand-orange)] mt-0.5">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        {item.question}
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqItems.map((item, i) => (
+                <AccordionItem
+                  key={item.question}
+                  value={item.question}
+                  className="group/item rounded-2xl border-none bg-white p-2 shadow-sm ring-1 ring-black/[0.06] transition-all duration-300 hover:shadow-md hover:ring-[var(--brand-orange)]/30 data-open:ring-[var(--brand-orange)]/50"
+                >
+                  <AccordionTrigger className="px-4 py-4 text-left text-sm font-semibold text-foreground transition-colors hover:text-[var(--brand-orange)] data-open:[&>span>span]:bg-[var(--brand-orange)] data-open:[&>span>span]:text-white data-open:text-[var(--brand-orange)] hover:no-underline">
+                    <span className="flex items-center gap-4">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[var(--brand-orange)]/10 text-xs font-bold text-[var(--brand-orange)] transition-colors duration-300">
+                        {String(i + 1).padStart(2, "0")}
                       </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5 pl-9">
-                      {item.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
+                      {item.question}
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 pb-4 pl-16 text-sm leading-relaxed text-muted-foreground">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </FadeIn>
         </div>
       </Section>
