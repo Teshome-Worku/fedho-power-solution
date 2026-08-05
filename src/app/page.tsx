@@ -505,16 +505,31 @@ export default function HomePage() {
             title="Frequently Asked Questions"
             description="Quick answers to common questions about FP Hybrid Generators and services."
           />
-          <div className="rounded-2xl border bg-white p-6 sm:p-8 shadow-sm">
-            <Accordion>
-              {faqItems.slice(0, 6).map((item) => (
-                <AccordionItem key={item.question} value={item.question}>
-                  <AccordionTrigger>{item.question}</AccordionTrigger>
-                  <AccordionContent>{item.answer}</AccordionContent>
+          <FadeIn delay={0.1}>
+            <Accordion className="space-y-4">
+              {faqItems.slice(0, 6).map((item, i) => (
+                <AccordionItem
+                  key={item.question}
+                  value={item.question}
+                  className="group/item rounded-2xl border-none bg-white p-2 shadow-sm ring-1 ring-black/[0.06] transition-all duration-300 hover:shadow-md hover:ring-[var(--brand-orange)]/30 data-open:ring-[var(--brand-orange)]/50"
+                >
+                  <AccordionTrigger className="px-4 py-4 text-left text-sm font-semibold text-foreground transition-colors hover:text-[var(--brand-orange)] data-open:[&>span>span]:bg-[var(--brand-orange)] data-open:[&>span>span]:text-white data-open:text-[var(--brand-orange)] hover:no-underline">
+                    <span className="flex items-center gap-4">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[var(--brand-orange)]/10 text-xs font-bold text-[var(--brand-orange)] transition-colors duration-300">
+                        0{i + 1}
+                      </span>
+                      {item.question}
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 pb-4 pt-2">
+                    <div className="pl-12 text-sm leading-relaxed text-muted-foreground">
+                      {item.answer}
+                    </div>
+                  </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
-          </div>
+          </FadeIn>
           <div className="mt-8 text-center">
             <Button
               nativeButton={false}
