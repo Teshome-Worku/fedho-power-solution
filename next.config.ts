@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   images: {
     // Add allowed image qualities used across the site (default 75)
     qualities: [75, 90],
+    // Disable on-demand image optimization to avoid server-side processing delays
+    // Images are already optimized in the `public/media` folder.
+    unoptimized: true,
   },
   async headers() {
     return [
