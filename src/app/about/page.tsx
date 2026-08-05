@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  CheckCircle2,
   Lightbulb,
   Leaf,
   Star,
@@ -60,7 +59,7 @@ export default function AboutPage() {
               Who We Are
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-              Ethiopia's Clean Energy Pioneer
+              Ethiopia&apos;s Clean Energy Pioneer
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground">
               {companyOverview.differentiator}

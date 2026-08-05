@@ -5,8 +5,8 @@ import Image from "next/image";
 import { X, ZoomIn } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { PageHero, Section, SectionHeader } from "@/components/shared/section";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion/motion";
+import { PageHero, Section } from "@/components/shared/section";
+import { FadeIn } from "@/components/motion/motion";
 import { galleryCategories, galleryItems, type GalleryCategory } from "@/content/gallery";
 import { cn } from "@/lib/utils";
 

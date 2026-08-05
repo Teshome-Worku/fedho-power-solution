@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { FadeIn, ScaleIn, StaggerContainer, StaggerItem } from "@/components/motion/motion";
 import { PageHero, Section, SectionHeader } from "@/components/shared/section";

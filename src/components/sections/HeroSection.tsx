@@ -38,7 +38,7 @@ export function HeroSection() {
         <div className="max-w-2xl">
           <FadeIn direction="up" delay={0.2} duration={0.8}>
             <Badge className="mb-6 rounded-full bg-white/10 text-white/90 border border-white/20 px-4 py-1.5 text-xs font-semibold backdrop-blur-sm">
-              🇪🇹 Powering Ethiopia's Future
+              🇪🇹 Powering Ethiopia&apos;s Future
             </Badge>
           </FadeIn>
 
@@ -86,7 +86,7 @@ export function HeroSection() {
                 "Silent Hybrid Technology",
                 "Solar + Grid Charging",
                 "2KW–600KW",
-              ].map((badge, i) => (
+              ].map((badge) => (
                 <div key={badge} className="flex items-center gap-2">
                   <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[var(--brand-orange)]/20">
                     <svg className="h-3 w-3 text-[var(--brand-orange)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">

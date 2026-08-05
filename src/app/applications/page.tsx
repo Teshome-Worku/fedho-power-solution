@@ -10,7 +10,6 @@ import {
   Home,
   Hotel,
   Landmark,
-  X,
   AlertCircle,
 } from "lucide-react";
 

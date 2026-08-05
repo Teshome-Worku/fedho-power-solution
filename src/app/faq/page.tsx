@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, HelpCircle } from "lucide-react";
 
 import { FadeIn, ScaleIn } from "@/components/motion/motion";
-import { PageHero, Section, SectionHeader } from "@/components/shared/section";
+import { PageHero, Section } from "@/components/shared/section";
 import {
   Accordion,
   AccordionContent,
@@ -41,7 +41,7 @@ export default function FaqPage() {
               <div>
                 <p className="text-sm font-bold text-foreground">Have a specific question?</p>
                 <p className="text-xs text-muted-foreground mt-0.5">
-                  If you don't find your answer below,{" "}
+                  If you don&apos;t find your answer below,{" "}
                   <Link href="/contact" className="text-[var(--brand-orange)] font-semibold hover:underline">
                     contact our team
                   </Link>{" "}

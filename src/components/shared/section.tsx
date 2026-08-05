@@ -81,12 +81,10 @@ export function PageHero({
   title,
   description,
   eyebrow,
-  image,
 }: {
   title: string;
   description?: string;
   eyebrow?: string;
-  image?: string;
 }) {
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-primary/[0.03] via-background to-[var(--brand-orange)]/[0.04] pt-[calc(72px+4rem)] pb-16 sm:pt-[calc(72px+5rem)] sm:pb-24">

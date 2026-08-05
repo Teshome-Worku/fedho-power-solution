@@ -102,7 +102,7 @@ export default function AwardsPage() {
                   <h3 className="text-sm font-bold text-foreground">{source.source}</h3>
                 </div>
                 {"title" in source && source.title && (
-                  <p className="text-xs font-semibold text-[var(--brand-orange)] mb-2 leading-snug">"{source.title}"</p>
+                  <p className="text-xs font-semibold text-[var(--brand-orange)] mb-2 leading-snug">&ldquo;{source.title}&rdquo;</p>
                 )}
                 <p className="text-xs text-muted-foreground leading-relaxed">{source.description}</p>
               </div>

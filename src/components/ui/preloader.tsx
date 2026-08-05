@@ -5,24 +5,29 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export function Preloader() {
-  const [isLoading, setIsLoading] = useState(true);
+  // Initialize from sessionStorage to avoid setting state synchronously in an effect
+  const [isLoading, setIsLoading] = useState(() => {
+    try {
+      return !sessionStorage.getItem("fedho-preloader-seen");
+    } catch {
+      return true;
+    }
+  });
 
   useEffect(() => {
-    // Check if we've already shown the preloader in this session to avoid annoying users
-    const hasSeenPreloader = sessionStorage.getItem("fedho-preloader-seen");
-    
-    if (hasSeenPreloader) {
-      setIsLoading(false);
-      return;
-    }
+    if (!isLoading) return;
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-      sessionStorage.setItem("fedho-preloader-seen", "true");
+      try {
+        sessionStorage.setItem("fedho-preloader-seen", "true");
+      } catch {
+        /* ignore */
+      }
     }, 2800); // ~3 seconds
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [isLoading]);
 
   return (
     <AnimatePresence>
@@ -88,7 +93,7 @@ export function Preloader() {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="text-white/90 text-lg sm:text-xl font-medium tracking-wide mb-12 text-center px-4 font-space-grotesk"
             >
-              Powering Ethiopia's Clean Energy Future
+              Powering Ethiopia&apos;s Clean Energy Future
             </motion.h1>
 
             {/* Progress Line */}

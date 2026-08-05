@@ -44,13 +44,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
   applicationSegments,
   customerPartnerships,
 } from "@/content/applications";
@@ -63,7 +56,7 @@ import {
 } from "@/content/company";
 import { faqItems } from "@/content/faq";
 import { productSeries } from "@/content/products";
-import { siteConfig } from "@/content/navigation";
+// siteConfig import removed; not used in this page
 import { stats } from "@/content/stats";
 import { systemFlow } from "@/content/technology";
 import { createOrgSchema, createPageMetadata } from "@/lib/seo";
@@ -87,14 +80,8 @@ const applicationIcons: Record<string, React.ElementType> = {
 const flowIcons = [Sun, BatteryCharging, Zap, Building2, Home];
 
 export default function HomePage() {
-  const orgSchema = createOrgSchema();
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-      />
 
       {/* ===== HERO ===== */}
       <HeroSection />

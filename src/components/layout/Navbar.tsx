@@ -24,7 +24,9 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    setMobileOpen(false);
+    // Defer closing mobile menu to avoid synchronous state update in effect
+    const id = setTimeout(() => setMobileOpen(false), 0);
+    return () => clearTimeout(id);
   }, [pathname]);
 
   useEffect(() => {

@@ -232,14 +232,22 @@ export function HeroImageSlider({
 }
 
 export function EnergyParticles() {
-  const particles = Array.from({ length: 12 }, (_, i) => ({
-    id: i,
-    left: `${10 + Math.random() * 80}%`,
-    top: `${20 + Math.random() * 60}%`,
-    delay: `${Math.random() * 5}s`,
-    size: 3 + Math.random() * 4,
-    duration: `${4 + Math.random() * 4}s`,
-  }));
+  const [particles, setParticles] = useState<{ id: number; left: string; top: string; delay: string; size: number; duration: string; }[]>([]);
+
+  useEffect(() => {
+    const generated = Array.from({ length: 12 }, (_, i) => ({
+      id: i,
+      left: `${10 + Math.random() * 80}%`,
+      top: `${20 + Math.random() * 60}%`,
+      delay: `${Math.random() * 5}s`,
+      size: 3 + Math.random() * 4,
+      duration: `${4 + Math.random() * 4}s`,
+    }));
+
+    // Defer state update to avoid synchronous setState inside the effect
+    const id = setTimeout(() => setParticles(generated), 0);
+    return () => clearTimeout(id);
+  }, []);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
