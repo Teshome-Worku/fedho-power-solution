@@ -42,8 +42,8 @@ export default function ProductsPage() {
         <StaggerContainer className="grid gap-8 md:grid-cols-2">
           {productSeries.map((series) => (
             <StaggerItem key={series.id}>
-              <div className="premium-card group overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06] hover:ring-[var(--brand-orange)]/20">
-                <div className="relative h-64 overflow-hidden">
+              <div className="premium-card group overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06] hover:ring-[var(--brand-orange)]/20 flex flex-col h-full">
+                <div className="relative overflow-hidden flex-none aspect-[16/9]">
                   <Image
                     src={series.image}
                     alt={series.imageAlt}

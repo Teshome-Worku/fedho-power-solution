@@ -88,14 +88,14 @@ export default function ApplicationsPage() {
             title="Who We Serve"
             description="Capacity ranges and use patterns vary by industry and infrastructure scale."
           />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
             {applicationSegments.map((segment, i) => {
               const Icon = applicationIcons[segment.id] || Building2;
               return (
                 <FadeIn key={segment.id} delay={i * 0.08}>
-                  <div className="premium-card group h-full overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06]">
+                  <div className="premium-card group h-full overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06] flex flex-col">
                     {segment.image ? (
-                      <div className="relative h-44 overflow-hidden">
+                      <div className="relative overflow-hidden flex-none aspect-[16/9]">
                         <Image
                           src={segment.image}
                           alt={segment.imageAlt || segment.title}
@@ -106,7 +106,7 @@ export default function ApplicationsPage() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                       </div>
                     ) : (
-                      <div className="flex items-center justify-center h-32 bg-gradient-to-br from-primary/[0.06] to-[var(--brand-orange)]/[0.06]">
+                      <div className="flex items-center justify-center aspect-[16/9] bg-gradient-to-br from-primary/[0.06] to-[var(--brand-orange)]/[0.06]">
                         <Icon className="size-12 text-primary/20" />
                       </div>
                     )}
@@ -134,8 +134,8 @@ export default function ApplicationsPage() {
 
             {/* Hospitality extra card */}
             <FadeIn delay={applicationSegments.length * 0.08}>
-              <div className="premium-card h-full overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06]">
-                <div className="flex items-center justify-center h-32 bg-gradient-to-br from-primary/[0.06] to-[var(--brand-orange)]/[0.06]">
+              <div className="premium-card h-full overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06] flex flex-col">
+                <div className="flex items-center justify-center aspect-[16/9] bg-gradient-to-br from-primary/[0.06] to-[var(--brand-orange)]/[0.06]">
                   <Hotel className="size-12 text-primary/20" />
                 </div>
                 <div className="p-6">
@@ -167,11 +167,11 @@ export default function ApplicationsPage() {
           title="Real Customer Highlights"
           description="Documented examples from public company updates."
         />
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3 auto-rows-fr">
           {customerPartnerships.map((item, i) => (
             <FadeIn key={item.title} delay={i * 0.1}>
-              <div className="premium-card group overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06]">
-                <div className="relative h-56 overflow-hidden">
+              <div className="premium-card group overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06] flex flex-col h-full">
+                <div className="relative overflow-hidden flex-none aspect-[16/9]">
                   <Image
                     src={item.image}
                     alt={item.imageAlt}

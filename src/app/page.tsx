@@ -249,7 +249,7 @@ export default function HomePage() {
             {productSeries.map((series) => (
               <StaggerItem key={series.id} className="h-full">
                 <div className="premium-card group relative overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/10 hover:ring-[var(--brand-orange)]/30 flex flex-col h-full">
-                  <div className="relative h-64 overflow-hidden flex-none">
+                  <div className="relative overflow-hidden flex-none aspect-[16/9]">
                     <Image
                       src={series.image}
                       alt={series.imageAlt}
@@ -310,7 +310,7 @@ export default function HomePage() {
               <FadeIn key={seg.id} delay={i * 0.08} className={`${i === 0 || i === 3 ? "lg:col-span-2" : ""} h-full`}>
                 <div className="premium-card group flex flex-col h-full overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/[0.08] hover:ring-black/[0.1]">
                   {seg.image ? (
-                    <div className="relative h-56 overflow-hidden">
+                    <div className="relative overflow-hidden flex-none aspect-[16/9]">
                       <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700 z-10" />
                       <Image
                         src={seg.image}
@@ -397,11 +397,11 @@ export default function HomePage() {
           title="Meet the Founders"
           description="Fedho combines entrepreneurial vision and technical engineering expertise."
         />
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-2 auto-rows-fr">
           {founders.map((founder, i) => (
             <FadeIn key={founder.name} delay={i * 0.15} direction={i === 0 ? "left" : "right"}>
-              <div className="premium-card group overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-700 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/5 hover:-translate-y-1">
-                <div className="relative h-[400px] overflow-hidden">
+              <div className="premium-card group overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-700 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/5 hover:-translate-y-1 flex flex-col h-full">
+                <div className="relative overflow-hidden flex-none aspect-[4/3]">
                   <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700 z-10" />
                   <Image
                     src={founder.image}
@@ -416,7 +416,7 @@ export default function HomePage() {
                     <p className="mt-2 text-sm font-semibold tracking-widest text-[var(--brand-orange)] uppercase">{founder.role}</p>
                   </div>
                 </div>
-                <div className="p-8">
+                <div className="p-8 flex flex-col grow">
                   <p className="text-base text-muted-foreground leading-relaxed">{founder.overview}</p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {founder.focus.map((f) => (
@@ -445,7 +445,7 @@ export default function HomePage() {
             {awards.slice(0, 3).map((award, i) => (
               <FadeIn key={award.id} delay={i * 0.1}>
                 <div className="premium-card group overflow-hidden rounded-3xl bg-white shadow-md shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/10 hover:ring-[var(--brand-orange)]/30 flex flex-col h-full">
-                  <div className="relative h-60 overflow-hidden bg-primary/5 p-8 flex-none flex items-center justify-center">
+                  <div className="relative overflow-hidden flex-none aspect-[16/9] bg-primary/5 p-8 flex items-center justify-center">
                     <Image
                       src={award.image}
                       alt={award.imageAlt}
@@ -488,11 +488,11 @@ export default function HomePage() {
           title="Verified Customer Installations"
           description="A sample of customer projects and partnership evidence documented from public updates."
         />
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3 auto-rows-fr">
           {customerPartnerships.map((item, i) => (
             <FadeIn key={item.title} delay={i * 0.1}>
-              <div className="premium-card group overflow-hidden rounded-3xl bg-white shadow-md shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/10 hover:ring-[var(--brand-orange)]/30">
-                <div className="relative h-64 overflow-hidden">
+              <div className="premium-card group overflow-hidden rounded-3xl bg-white shadow-md shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/10 hover:ring-[var(--brand-orange)]/30 flex flex-col h-full">
+                <div className="relative overflow-hidden flex-none aspect-[16/9]">
                   <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700 z-10" />
                   <Image
                     src={item.image}

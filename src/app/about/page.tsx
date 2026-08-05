@@ -150,11 +150,11 @@ export default function AboutPage() {
           title="Meet the Founders"
           description="Fedho combines entrepreneurial vision and deep technical engineering expertise."
         />
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-2 auto-rows-fr">
           {founders.map((founder, i) => (
             <FadeIn key={founder.name} delay={i * 0.15} direction={i === 0 ? "left" : "right"}>
-              <div className="premium-card group overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06]">
-                <div className="relative h-80 overflow-hidden">
+              <div className="premium-card group overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06] flex flex-col h-full">
+                <div className="relative overflow-hidden flex-none aspect-[4/3]">
                   <Image
                     src={founder.image}
                     alt={founder.imageAlt}
@@ -169,7 +169,7 @@ export default function AboutPage() {
                     <Badge className="mt-2 bg-[var(--brand-orange)] text-white text-xs border-0">{founder.title}</Badge>
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex flex-col grow">
                   <p className="text-sm leading-relaxed text-muted-foreground">{founder.overview}</p>
                   <div className="mt-5 flex flex-wrap gap-2">
                     {founder.focus.map((f) => (
