@@ -334,3 +334,19 @@
     transparent
   );
 }
+
+/* ===== Dashed Line Animation ===== */
+.dashed-line-animated {
+  background-image: linear-gradient(to right, var(--brand-orange) 50%, transparent 50%);
+  background-size: 20px 2px;
+  animation: moveDashedLine 1s linear infinite;
+}
+
+@keyframes moveDashedLine {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 0;
+  }
+}

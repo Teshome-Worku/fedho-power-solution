@@ -262,34 +262,33 @@ export default function HomePage() {
           <StaggerContainer className="grid gap-6 md:grid-cols-2">
             {productSeries.map((series) => (
               <StaggerItem key={series.id}>
-                <div className="premium-card group relative overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06] hover:ring-[var(--brand-orange)]/20">
-                  <div className="relative h-56 overflow-hidden">
+                <div className="premium-card group relative overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/10 hover:ring-[var(--brand-orange)]/30">
+                  <div className="relative h-64 overflow-hidden">
                     <Image
                       src={series.image}
                       alt={series.imageAlt}
                       width={900}
                       height={540}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                    <Badge className="absolute bottom-4 left-4 bg-[var(--brand-orange)] text-white border-0 text-xs">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity duration-700 group-hover:opacity-60" />
+                    <Badge className="absolute bottom-5 left-5 bg-[var(--brand-orange)] text-white border-0 text-xs font-bold tracking-widest uppercase shadow-lg">
                       {series.capacityRange}
                     </Badge>
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-primary">{series.name}</h3>
-                    <p className="mt-1 text-xs font-medium text-muted-foreground">
+                  <div className="p-8">
+                    <h3 className="text-xl font-extrabold text-primary tracking-tight">{series.name}</h3>
+                    <p className="mt-2 text-xs font-semibold tracking-widest text-[var(--brand-orange)] uppercase">
                       For {series.targetCustomer}
                     </p>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                       {series.description}
                     </p>
-                    <div className="mt-5 flex gap-3">
+                    <div className="mt-8 flex gap-4">
                       <Button
                         nativeButton={false}
                         render={<Link href="/contact" />}
-                        size="sm"
-                        className="rounded-lg bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white text-xs"
+                        className="rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-lg shadow-[var(--brand-orange)]/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[var(--brand-orange)]/40 font-semibold"
                       >
                         Request Quote
                       </Button>
@@ -297,8 +296,7 @@ export default function HomePage() {
                         nativeButton={false}
                         render={<Link href="/products" />}
                         variant="outline"
-                        size="sm"
-                        className="rounded-lg text-xs"
+                        className="rounded-xl hover:bg-primary hover:text-white transition-colors duration-300"
                       >
                         View Details
                       </Button>
@@ -323,35 +321,45 @@ export default function HomePage() {
           {applicationSegments.map((seg, i) => {
             const Icon = applicationIcons[seg.id] || Building2;
             return (
-              <FadeIn key={seg.id} delay={i * 0.08}>
-                <div className="premium-card group overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06]">
+              <FadeIn key={seg.id} delay={i * 0.08} className={i === 0 || i === 3 ? "lg:col-span-2" : ""}>
+                <div className="premium-card group flex flex-col h-full overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/[0.08] hover:ring-black/[0.1]">
                   {seg.image ? (
-                    <div className="relative h-40 overflow-hidden">
+                    <div className="relative h-56 overflow-hidden">
+                      <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700 z-10" />
                       <Image
                         src={seg.image}
                         alt={seg.imageAlt || seg.title}
-                        width={600}
-                        height={400}
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        width={800}
+                        height={600}
+                        className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-20" />
+                      <div className="absolute bottom-6 left-6 z-30 flex items-center gap-4">
+                        <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md ring-1 ring-white/20">
+                          <Icon className="size-6 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-white tracking-tight">{seg.title}</h3>
+                          <p className="text-xs font-semibold tracking-widest text-[var(--brand-orange)] uppercase">{seg.products}</p>
+                        </div>
+                      </div>
                     </div>
                   ) : (
-                    <div className="flex items-center justify-center h-40 bg-gradient-to-br from-primary/[0.06] to-[var(--brand-orange)]/[0.06]">
-                      <Icon className="size-12 text-primary/30" />
+                    <div className="flex items-center justify-center h-56 bg-gradient-to-br from-primary/[0.02] to-[var(--brand-orange)]/[0.05] relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--brand-orange)_0%,transparent_70%)] opacity-[0.03]" />
+                      <Icon className="size-16 text-primary/20 group-hover:text-primary/30 transition-colors duration-500 group-hover:scale-110 transform" />
                     </div>
                   )}
-                  <div className="p-5">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8">
-                        <Icon className="size-5 text-primary" />
+                  <div className="p-8 grow flex flex-col justify-between">
+                    {!seg.image && (
+                      <div className="mb-4">
+                        <h3 className="text-xl font-extrabold text-primary tracking-tight">{seg.title}</h3>
+                        <p className="mt-1 text-xs font-semibold tracking-widest text-[var(--brand-orange)] uppercase">{seg.products}</p>
                       </div>
-                      <div>
-                        <h3 className="text-sm font-bold text-foreground">{seg.title}</h3>
-                        <p className="text-xs text-[var(--brand-orange)] font-semibold">{seg.products}</p>
-                      </div>
-                    </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{seg.description}</p>
+                    )}
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {seg.description}
+                    </p>
                   </div>
                 </div>
               </FadeIn>
@@ -447,22 +455,22 @@ export default function HomePage() {
           <div className="grid gap-6 md:grid-cols-3">
             {awards.slice(0, 3).map((award, i) => (
               <FadeIn key={award.id} delay={i * 0.1}>
-                <div className="premium-card group overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06]">
-                  <div className="relative h-52 overflow-hidden">
+                <div className="premium-card group overflow-hidden rounded-3xl bg-white shadow-md shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/10 hover:ring-[var(--brand-orange)]/30">
+                  <div className="relative h-60 overflow-hidden bg-primary/5 p-8 flex items-center justify-center">
                     <Image
                       src={award.image}
                       alt={award.imageAlt}
                       width={800}
                       height={500}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-110 drop-shadow-xl"
                     />
                   </div>
-                  <div className="p-5">
+                  <div className="p-8">
                     {award.year && (
-                      <p className="text-xs font-bold text-[var(--brand-orange)] mb-1">{award.year}</p>
+                      <p className="text-xs font-bold tracking-widest text-[var(--brand-orange)] uppercase mb-2">{award.year}</p>
                     )}
-                    <h3 className="text-sm font-bold text-foreground">{award.title}</h3>
-                    <p className="mt-1 text-xs text-muted-foreground">{award.description}</p>
+                    <h3 className="text-lg font-extrabold text-primary tracking-tight">{award.title}</h3>
+                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{award.description}</p>
                   </div>
                 </div>
               </FadeIn>
@@ -494,17 +502,18 @@ export default function HomePage() {
         <div className="grid gap-6 md:grid-cols-3">
           {customerPartnerships.map((item, i) => (
             <FadeIn key={item.title} delay={i * 0.1}>
-              <div className="premium-card group overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06]">
-                <div className="relative h-52 overflow-hidden">
+              <div className="premium-card group overflow-hidden rounded-3xl bg-white shadow-md shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/10 hover:ring-[var(--brand-orange)]/30">
+                <div className="relative h-64 overflow-hidden">
+                  <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700 z-10" />
                   <Image
                     src={item.image}
                     alt={item.imageAlt}
                     width={700}
                     height={460}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <h3 className="absolute bottom-4 left-5 text-sm font-bold text-white">{item.title}</h3>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-20" />
+                  <h3 className="absolute bottom-6 left-6 z-30 text-lg font-bold text-white tracking-tight">{item.title}</h3>
                 </div>
               </div>
             </FadeIn>
