@@ -3,6 +3,8 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { motion } from "framer-motion";
+
 import { EnergyParticles, FadeIn, HeroImageSlider } from "@/components/motion/motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -60,10 +62,10 @@ export function HeroSection() {
                 nativeButton={false}
                 render={<Link href="/contact" />}
                 size="lg"
-                className="rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-xl shadow-[var(--brand-orange)]/25 hover:shadow-2xl hover:brightness-110 transition-all duration-300 text-sm font-semibold px-8"
+                className="group rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-xl shadow-[var(--brand-orange)]/25 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/40 hover:-translate-y-0.5 transition-all duration-300 text-sm font-semibold px-8"
               >
                 Request a Quote
-                <ArrowRight className="size-4" />
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Button>
               <Button
                 nativeButton={false}
@@ -100,11 +102,15 @@ export function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <FadeIn delay={1.5} duration={1} className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
-        <a href="#about" className="group flex flex-col items-center gap-2 cursor-pointer transition-opacity hover:opacity-80">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">Scroll to Explore</span>
-          <div className="flex h-8 w-5 items-center justify-center rounded-full border border-white/20 p-1">
-            <div className="h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)] animate-bounce" />
+      <FadeIn delay={1.5} duration={1} className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center hidden sm:flex">
+        <a href="#about" className="group flex flex-col items-center gap-3 cursor-pointer transition-opacity hover:opacity-100 opacity-70">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-white/80">Scroll to Explore</span>
+          <div className="flex h-11 w-6 items-start justify-center rounded-full border-2 border-white/20 p-1 transition-colors group-hover:border-[var(--brand-orange)]/50">
+            <motion.div
+              animate={{ y: [0, 16, 0], opacity: [1, 0, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)]"
+            />
           </div>
         </a>
       </FadeIn>
