@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -15,7 +15,13 @@ export function Preloader() {
   });
 
   // Dismiss helper (also used for tap-to-skip)
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const dismiss = () => {
+    try {
+      if (containerRef.current) containerRef.current.style.pointerEvents = "none";
+    } catch {
+      /* ignore */
+    }
     setIsLoading(false);
     try {
       sessionStorage.setItem("fedho-preloader-seen", "true");
@@ -46,8 +52,9 @@ export function Preloader() {
         <motion.div
           key="preloader"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
+          exit={{ opacity: 0, transition: { duration: 0.32, ease: "easeInOut" } }}
           data-testid="preloader"
+          ref={containerRef}
           onClick={dismiss}
           onKeyDown={handleKeyDown}
           role="button"
