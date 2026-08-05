@@ -5,14 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 // Use plain <img> here to avoid layout/hydration issues on slow mobile loads
 
 export function Preloader() {
-  // Initialize from sessionStorage to avoid setting state synchronously in an effect
-  const [isLoading, setIsLoading] = useState(() => {
-    try {
-      return !sessionStorage.getItem("fedho-preloader-seen");
-    } catch {
-      return true;
-    }
-  });
+  // Only show preloader after client has mounted. If JS doesn't run, users see page content.
+  const [mounted, setMounted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Dismiss helper (also used for tap-to-skip)
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -37,16 +32,26 @@ export function Preloader() {
   };
 
   useEffect(() => {
-    if (!isLoading) return;
+    setMounted(true);
 
-    const timer = setTimeout(() => {
-      dismiss();
-    }, 1200); // shorten to ~1.2s for faster mobile UX
+    // Determine whether to show the preloader on mount
+    try {
+      const seen = sessionStorage.getItem("fedho-preloader-seen");
+      // show preloader only if not seen before
+      const shouldShow = !seen;
+      if (shouldShow) {
+        setIsLoading(true);
+        const timer = setTimeout(() => dismiss(), 1200);
+        return () => clearTimeout(timer);
+      }
+    } catch {
+      // If sessionStorage is unavailable, default to not blocking the page
+      setIsLoading(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    return () => clearTimeout(timer);
-  }, [isLoading]);
-
-  // Auto-dismiss preloader immediately on small viewports (mobile-first)
+  // Auto-dismiss on small viewports
   useEffect(() => {
     try {
       if (typeof window !== "undefined" && window.innerWidth <= 480) {
@@ -56,6 +61,9 @@ export function Preloader() {
       /* ignore */
     }
   }, []);
+
+  // Render nothing on the server or before mount to avoid blocking when JS is absent
+  if (!mounted) return null;
 
   return (
     <AnimatePresence>
