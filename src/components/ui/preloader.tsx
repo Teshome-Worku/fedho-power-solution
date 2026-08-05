@@ -14,17 +14,28 @@ export function Preloader() {
     }
   });
 
+  // Dismiss helper (also used for tap-to-skip)
+  const dismiss = () => {
+    setIsLoading(false);
+    try {
+      sessionStorage.setItem("fedho-preloader-seen", "true");
+    } catch {
+      /* ignore */
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      dismiss();
+    }
+  };
+
   useEffect(() => {
     if (!isLoading) return;
 
     const timer = setTimeout(() => {
-      setIsLoading(false);
-      try {
-        sessionStorage.setItem("fedho-preloader-seen", "true");
-      } catch {
-        /* ignore */
-      }
-    }, 2800); // ~3 seconds
+      dismiss();
+    }, 1200); // shorten to ~1.2s for faster mobile UX
 
     return () => clearTimeout(timer);
   }, [isLoading]);
@@ -36,6 +47,11 @@ export function Preloader() {
           key="preloader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
+          data-testid="preloader"
+          onClick={dismiss}
+          onKeyDown={handleKeyDown}
+          role="button"
+          tabIndex={0}
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#0a1128] overflow-hidden"
         >
           {/* Subtle moving background gradient */}
