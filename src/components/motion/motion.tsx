@@ -8,6 +8,7 @@ import {
   type HTMLMotionProps,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
@@ -204,23 +205,29 @@ export function HeroImageSlider({
   }, [images.length, interval]);
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={current}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 1.2, ease: "easeInOut" }}
-        className="absolute inset-0"
-      >
-        <div
-          className="absolute inset-0 animate-ken-burns bg-cover bg-center"
-          style={{ backgroundImage: `url(${images[current].src})` }}
-          role="img"
-          aria-label={images[current].alt}
-        />
-      </motion.div>
-    </AnimatePresence>
+    <div className="absolute inset-0 overflow-hidden bg-[var(--brand-blue)]">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className="absolute inset-0 animate-ken-burns"
+        >
+          <Image
+            src={images[current].src}
+            alt={images[current].alt}
+            fill
+            className="object-cover object-center"
+            priority={current === 0}
+            fetchPriority={current === 0 ? "high" : "auto"}
+            sizes="100vw"
+            quality={90}
+          />
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 }
 

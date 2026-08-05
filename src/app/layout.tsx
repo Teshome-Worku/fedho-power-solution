@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
+import Script from "next/script";
 
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { Preloader } from "@/components/ui/preloader";
-import { createPageMetadata } from "@/lib/seo";
+import { createPageMetadata, createOrgSchema } from "@/lib/seo";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -21,9 +22,9 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   ...createPageMetadata({
-    title: "Reliable Hybrid Power Solutions",
+    title: "Fedho Power Solution PLC | Silent Hybrid Power Generators in Ethiopia",
     description:
-      "Fedho Power Solution PLC develops locally assembled hybrid generators combining solar energy, battery storage, and intelligent power management.",
+      "Ethiopian clean-energy company specializing in silent hybrid power generators combining solar energy, battery storage, and grid charging for homes, businesses, and institutions.",
     path: "/",
   }),
 };
@@ -34,6 +35,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${manrope.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
+      <head>
+        <Script
+          id="schema-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(createOrgSchema()),
+          }}
+        />
+        {/* Analytics Hooks Prepared - Add IDs when ready */}
+        {/* <Script id="gtm" strategy="afterInteractive">...</Script> */}
+        {/* <Script id="ga" strategy="afterInteractive">...</Script> */}
+        {/* <Script id="clarity" strategy="afterInteractive">...</Script> */}
+        {/* <Script id="pixel" strategy="afterInteractive">...</Script> */}
+      </head>
       <body className="min-h-full flex flex-col">
         <a
           href="#main-content"
