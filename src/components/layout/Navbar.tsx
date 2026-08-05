@@ -57,6 +57,7 @@ export function Navbar() {
                 alt={`${siteConfig.name} logo`}
                 width={44}
                 height={44}
+                style={{ height: "auto" }}
                 className="rounded-xl object-cover ring-2 ring-primary/10 transition-all duration-300 group-hover:ring-primary/30"
                 priority
               />

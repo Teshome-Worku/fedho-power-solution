@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
+  images: {
+    // Add allowed image qualities used across the site (default 75)
+    qualities: [75, 90],
+  },
   async headers() {
     return [
       {

@@ -62,6 +62,7 @@ export function Footer() {
                 alt={`${siteConfig.name} logo`}
                 width={52}
                 height={52}
+                style={{ height: "auto" }}
                 className="rounded-xl object-cover ring-2 ring-white/10"
               />
               <div>
