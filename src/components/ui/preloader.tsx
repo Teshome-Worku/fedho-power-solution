@@ -46,6 +46,17 @@ export function Preloader() {
     return () => clearTimeout(timer);
   }, [isLoading]);
 
+  // Auto-dismiss preloader immediately on small viewports (mobile-first)
+  useEffect(() => {
+    try {
+      if (typeof window !== "undefined" && window.innerWidth <= 480) {
+        dismiss();
+      }
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
   return (
     <AnimatePresence>
       {isLoading && (
