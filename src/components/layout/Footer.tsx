@@ -67,7 +67,7 @@ export function Footer() {
               Quick Links
             </h3>
             <ul className="space-y-3">
-              {navLinks.slice(0, 6).map((link) => (
+              {navLinks.slice(0, 5).map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -77,6 +77,14 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/faq"
+                  className="text-sm text-white/65 transition-colors hover:text-white"
+                >
+                  FAQ
+                </Link>
+              </li>
             </ul>
           </div>
 
