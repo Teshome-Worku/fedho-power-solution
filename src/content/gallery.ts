@@ -159,4 +159,18 @@ export const galleryItems: GalleryItem[] = [
     title: "Makina Yesus Seminar Partnership",
     categories: ["customers", "installations"],
   },
+  {
+    id: "fedesa-pm",
+    src: "/media/founders/fedesa_with_prime_minster_dr_abiy_ahmed.jpg",
+    alt: "Fedesa Shuma with Prime Minister Dr. Abiy Ahmed",
+    title: "Presentation to Prime Minister",
+    categories: ["founders", "awards"],
+  },
+  {
+    id: "henok-lab",
+    src: "/media/installations/henok_when_building_generators_in_lab.jpg",
+    alt: "CTO Henok Amanuel building generators in lab",
+    title: "CTO in R&D Laboratory",
+    categories: ["founders", "factory"],
+  },
 ];
