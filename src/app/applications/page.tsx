@@ -132,11 +132,17 @@ export default function ApplicationsPage() {
               );
             })}
 
-            {/* Hospitality extra card */}
             <FadeIn delay={applicationSegments.length * 0.08}>
-              <div className="premium-card h-full overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06] flex flex-col">
-                <div className="flex items-center justify-center aspect-[16/9] bg-gradient-to-br from-primary/[0.06] to-[var(--brand-orange)]/[0.06]">
-                  <Hotel className="size-12 text-primary/20" />
+              <div className="premium-card h-full overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06] flex flex-col group">
+                <div className="relative overflow-hidden flex-none aspect-[16/9]">
+                  <Image
+                    src="/media/installations/installation_photo.jpg"
+                    alt="Hospitality and Hotel Power Solutions"
+                    width={600}
+                    height={400}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-3">
@@ -189,22 +195,24 @@ export default function ApplicationsPage() {
       </Section>
 
       {/* ===== CTA ===== */}
-      <Section className="pt-0">
+      <Section className="pt-0 pb-24">
         <ScaleIn>
-          <div className="relative overflow-hidden rounded-3xl bg-[var(--brand-blue)] px-8 py-14 text-white sm:px-14">
-            <div className="absolute top-0 right-0 w-72 h-72 bg-[var(--brand-orange)]/10 rounded-full blur-3xl" aria-hidden="true" />
-            <div className="relative">
-              <h2 className="text-2xl font-bold sm:text-3xl">Need help identifying your ideal capacity?</h2>
-              <p className="mt-3 text-white/70 max-w-xl">
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[var(--brand-blue)] via-[var(--brand-blue)] to-[#0a1628] px-8 py-20 text-white sm:px-16 shadow-2xl shadow-primary/20 text-center">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--brand-orange)]/15 rounded-full blur-[100px]" aria-hidden="true" />
+            <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-[80px]" aria-hidden="true" />
+            <div className="relative max-w-3xl mx-auto">
+              <p className="text-xs font-bold uppercase tracking-widest text-[var(--brand-orange)] mb-5">Power Your Business</p>
+              <h2 className="text-3xl font-extrabold sm:text-4xl tracking-tight">Need help identifying your ideal capacity?</h2>
+              <p className="mt-4 text-white/60 text-lg">
                 Request a technical consultation to estimate load requirements and the right generator series.
               </p>
               <Button
                 nativeButton={false}
                 render={<Link href="/contact" />}
                 size="lg"
-                className="mt-6 rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white"
+                className="group mt-10 rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-xl shadow-[var(--brand-orange)]/30 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/50 transition-all duration-300 font-bold"
               >
-                Request a Quote <ArrowRight className="size-4" />
+                Request a Quote <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
           </div>

@@ -14,6 +14,7 @@ import {
 
 import { FadeIn, ScaleIn, StaggerContainer, StaggerItem } from "@/components/motion/motion";
 import { PageHero, Section, SectionHeader } from "@/components/shared/section";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -156,40 +157,51 @@ export default function TechnologyPage() {
       {/* ===== POWER PRIORITY + INTELLIGENT MGMT — Side by Side ===== */}
       <section className="relative overflow-hidden bg-gradient-to-b from-secondary/20 to-background py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2">
+          <div className="grid gap-12 lg:grid-cols-2 items-center">
             <FadeIn direction="left">
-              <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--brand-orange)]">Power Priority</p>
-              <h2 className="text-2xl font-bold tracking-tight text-primary sm:text-3xl">Smart Source Selection</h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                The system automatically selects the most efficient energy source at any time.
+              <p className="mb-5 text-xs font-bold uppercase tracking-[0.25em] text-[var(--brand-orange)]">Smart Power Priority</p>
+              <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">Intelligent Energy Management</h2>
+              <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+                {intelligentManagement.summary}
               </p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">{intelligentManagement.automaticSwitching}</p>
+
               <div className="mt-8 space-y-4">
                 {powerPriority.map((p) => (
-                  <div key={p.source} className="flex items-center gap-4 rounded-xl bg-white p-5 ring-1 ring-black/[0.06]">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[var(--brand-orange)]/10 shrink-0">
-                      <span className="text-lg font-bold text-[var(--brand-orange)]">{p.order}</span>
+                  <div key={p.source} className="group flex items-center gap-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/[0.04] transition-all duration-300 hover:shadow-md hover:ring-[var(--brand-orange)]/20 hover:-translate-y-1">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[var(--brand-orange)]/10 shrink-0 transition-colors group-hover:bg-[var(--brand-orange)]/20">
+                      <span className="text-xl font-black text-[var(--brand-orange)]">{p.order}</span>
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-foreground">{p.source}</p>
-                      <p className="text-xs text-muted-foreground">{p.description}</p>
+                      <p className="text-base font-bold text-foreground">{p.source}</p>
+                      <p className="text-sm text-muted-foreground">{p.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </FadeIn>
             <FadeIn direction="right" delay={0.15}>
-              <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--brand-orange)]">Intelligent Management</p>
-              <h2 className="text-2xl font-bold tracking-tight text-primary sm:text-3xl">{intelligentManagement.title}</h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">{intelligentManagement.summary}</p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{intelligentManagement.automaticSwitching}</p>
-              <ul className="mt-6 grid gap-2 sm:grid-cols-2">
-                {intelligentManagement.userBenefits.map((b) => (
-                  <li key={b} className="flex items-center gap-2 text-sm text-foreground/80">
-                    <CheckCircle2 className="size-4 shrink-0 text-[var(--brand-orange)]" />
-                    {b}
-                  </li>
-                ))}
-              </ul>
+              <div className="relative group">
+                <div className="absolute -inset-4 rounded-3xl bg-[var(--brand-orange)]/10 blur-2xl transition-all duration-500 group-hover:bg-[var(--brand-orange)]/15" aria-hidden="true" />
+                <Image
+                  src="/media/products_and_generators/product_in_work.jpg"
+                  alt="Intelligent Hybrid Power Management System"
+                  width={800}
+                  height={600}
+                  className="relative rounded-[2rem] object-cover shadow-2xl ring-1 ring-black/5"
+                />
+                <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-black/5 lg:block transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-12px_rgba(0,0,0,0.15)]">
+                   <div className="flex items-center gap-4">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-green-100">
+                        <CheckCircle2 className="size-6 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="text-lg font-bold text-primary tracking-tight">Zero Interruption</p>
+                        <p className="text-xs font-bold tracking-widest text-[var(--brand-orange)] uppercase">Automatic Switch</p>
+                      </div>
+                   </div>
+                </div>
+              </div>
             </FadeIn>
           </div>
         </div>
@@ -260,31 +272,34 @@ export default function TechnologyPage() {
       </section>
 
       {/* ===== CTA ===== */}
-      <Section>
+      <Section className="pt-0 pb-24">
         <ScaleIn>
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/5 to-[var(--brand-orange)]/5 border p-10 sm:p-14 text-center">
-            <h2 className="text-2xl font-bold text-primary sm:text-3xl">See It in Action</h2>
-            <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
-              Contact our team to request a demo or discuss your specific power requirements.
-            </p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row items-center justify-center">
-              <Button
-                nativeButton={false}
-                render={<Link href="/contact" />}
-                size="lg"
-                className="rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white"
-              >
-                Request a Quote <ArrowRight className="size-4" />
-              </Button>
-              <Button
-                nativeButton={false}
-                render={<Link href="/products" />}
-                variant="outline"
-                size="lg"
-                className="rounded-xl"
-              >
-                View Products
-              </Button>
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[var(--brand-blue)] via-[var(--brand-blue)] to-[#0a1628] px-8 py-20 text-white sm:px-16 shadow-2xl shadow-primary/20">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--brand-orange)]/15 rounded-full blur-[100px]" aria-hidden="true" />
+            <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-[80px]" aria-hidden="true" />
+            <div className="relative max-w-2xl mx-auto text-center">
+              <p className="text-xs font-bold uppercase tracking-widest text-[var(--brand-orange)] mb-5">Next Steps</p>
+              <h2 className="text-3xl font-extrabold sm:text-4xl tracking-tight">Ready to see it in action?</h2>
+              <p className="mt-4 text-white/60 text-lg">Contact our team to request a demo or discuss your specific power requirements.</p>
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row items-center justify-center">
+                <Button
+                  nativeButton={false}
+                  render={<Link href="/contact" />}
+                  size="lg"
+                  className="group rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-xl shadow-[var(--brand-orange)]/30 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/50 transition-all duration-300 font-bold"
+                >
+                  Request a Quote <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+                <Button
+                  nativeButton={false}
+                  render={<Link href="/products" />}
+                  variant="outline"
+                  size="lg"
+                  className="group rounded-xl bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-sm font-semibold border-0"
+                >
+                  View Products <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </div>
             </div>
           </div>
         </ScaleIn>

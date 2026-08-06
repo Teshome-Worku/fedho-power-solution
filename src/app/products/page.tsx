@@ -39,81 +39,95 @@ export default function ProductsPage() {
           title="Choose the Right Capacity Range"
           description="A professional site assessment is recommended before purchase."
         />
-        <StaggerContainer className="grid gap-8 md:grid-cols-2">
-          {productSeries.map((series) => (
-            <StaggerItem key={series.id}>
-              <div className="premium-card group overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06] hover:ring-[var(--brand-orange)]/20 flex flex-col h-full">
-                <div className="relative overflow-hidden flex-none aspect-[16/9]">
-                  <Image
-                    src={series.image}
-                    alt={series.imageAlt}
-                    width={900}
-                    height={540}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-5 flex items-center gap-3">
-                    <Badge className="bg-[var(--brand-orange)] text-white border-0 text-xs px-3">
-                      {series.capacityRange}
-                    </Badge>
-                    <Badge className="bg-white/20 text-white border-0 text-xs px-3 backdrop-blur-sm">
-                      {series.targetCustomer}
-                    </Badge>
-                  </div>
-                </div>
-                <div className="p-7">
-                  <h3 className="text-xl font-bold text-primary">{series.name}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{series.description}</p>
-
-                  {/* Typical Applications */}
-                  <div className="mt-5">
-                    <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">Typical Applications</p>
-                    <div className="flex flex-wrap gap-2">
-                      {series.applications.map((app) => (
-                        <Badge key={app} variant="secondary" className="text-xs rounded-lg">
-                          {app}
+        <div className="space-y-16 lg:space-y-32">
+          {productSeries.map((series, i) => (
+            <div key={series.id} className={`flex flex-col lg:items-center gap-10 lg:gap-16 ${i % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
+              
+              {/* Product Image Side */}
+              <FadeIn direction={i % 2 === 0 ? "left" : "right"} className="lg:w-1/2">
+                <div className="relative group">
+                   <div className="absolute -inset-4 rounded-3xl bg-[var(--brand-orange)]/10 blur-2xl transition-all duration-500 group-hover:bg-[var(--brand-orange)]/20" aria-hidden="true" />
+                   <div className="relative rounded-[2rem] overflow-hidden aspect-[4/3] shadow-2xl ring-1 ring-black/5">
+                      <Image
+                        src={series.image}
+                        alt={series.imageAlt}
+                        width={1000}
+                        height={750}
+                        className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                      <div className="absolute bottom-6 left-6 flex items-center gap-3 z-20">
+                        <Badge className="bg-[var(--brand-orange)] text-white border-0 text-sm px-4 py-1.5 shadow-lg font-bold tracking-widest uppercase">
+                          {series.capacityRange}
                         </Badge>
-                      ))}
-                    </div>
-                  </div>
+                        <Badge className="bg-white/20 text-white border-0 text-sm px-4 py-1.5 backdrop-blur-md shadow-lg font-bold tracking-widest uppercase">
+                          {series.targetCustomer}
+                        </Badge>
+                      </div>
+                   </div>
+                </div>
+              </FadeIn>
 
-                  {/* Capacity options */}
-                  <div className="mt-5">
-                    <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">Available Capacities</p>
-                    <div className="flex flex-wrap gap-2">
-                      {series.capacities.map((cap) => (
-                        <span key={cap} className="inline-flex items-center rounded-lg border border-border px-3 py-1 text-xs font-semibold text-foreground/70">
-                          {cap}
-                        </span>
-                      ))}
+              {/* Product Content Side */}
+              <FadeIn direction={i % 2 === 0 ? "right" : "left"} className="lg:w-1/2">
+                <div>
+                  <h3 className="text-3xl font-extrabold text-primary tracking-tight lg:text-4xl">{series.name}</h3>
+                  <p className="mt-4 text-lg text-muted-foreground leading-relaxed max-w-lg">{series.description}</p>
+
+                  <div className="mt-8 grid gap-8 sm:grid-cols-2">
+                    {/* Typical Applications */}
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-widest text-[var(--brand-orange)] mb-3">Target Applications</p>
+                      <ul className="space-y-2">
+                        {series.applications.map((app) => (
+                           <li key={app} className="flex items-start gap-2.5 text-sm font-semibold text-foreground/80">
+                             <CheckCircle2 className="size-4 shrink-0 text-[var(--brand-orange)] mt-0.5" />
+                             {app}
+                           </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Capacity options */}
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-widest text-[var(--brand-orange)] mb-3">Available Capacities</p>
+                      <div className="flex flex-wrap gap-2">
+                        {series.capacities.map((cap) => (
+                          <span key={cap} className="inline-flex items-center rounded-xl bg-secondary/50 px-3 py-1.5 text-sm font-bold text-primary ring-1 ring-black/5">
+                            {cap}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
                   {/* CTAs */}
-                  <div className="mt-6 flex gap-3">
+                  <div className="mt-10 flex flex-wrap gap-4">
                     <Button
                       nativeButton={false}
                       render={<Link href="/contact" />}
-                      size="sm"
-                      className="rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white"
+                      size="lg"
+                      className="group rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-xl shadow-[var(--brand-orange)]/20 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/40 transition-all duration-300 font-bold"
                     >
                       Request Quote
+                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                     </Button>
                     <Button
                       nativeButton={false}
                       render={<Link href="/technology" />}
                       variant="outline"
-                      size="sm"
-                      className="rounded-xl"
+                      size="lg"
+                      className="group rounded-xl hover:border-[var(--brand-orange)]/30 transition-all duration-300 font-semibold"
                     >
                       How It Works
+                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-1 text-[var(--brand-orange)]" />
                     </Button>
                   </div>
                 </div>
-              </div>
-            </StaggerItem>
+              </FadeIn>
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
       </Section>
 
       {/* ===== COMPARISON TABLE ===== */}
@@ -195,22 +209,24 @@ export default function ProductsPage() {
       </Section>
 
       {/* ===== CTA ===== */}
-      <Section className="pt-0">
+      <Section className="pt-0 pb-24">
         <ScaleIn>
-          <div className="relative overflow-hidden rounded-3xl bg-[var(--brand-blue)] px-8 py-14 text-white sm:px-14">
-            <div className="absolute top-0 right-0 w-72 h-72 bg-[var(--brand-orange)]/10 rounded-full blur-3xl" aria-hidden="true" />
-            <div className="relative">
-              <h2 className="text-2xl font-bold sm:text-3xl">Need help identifying your ideal capacity?</h2>
-              <p className="mt-3 text-white/70 max-w-xl">
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[var(--brand-blue)] via-[var(--brand-blue)] to-[#0a1628] px-8 py-20 text-white sm:px-16 shadow-2xl shadow-primary/20 text-center">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--brand-orange)]/15 rounded-full blur-[100px]" aria-hidden="true" />
+            <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-[80px]" aria-hidden="true" />
+            <div className="relative max-w-3xl mx-auto">
+              <p className="text-xs font-bold uppercase tracking-widest text-[var(--brand-orange)] mb-5">Professional Consultation</p>
+              <h2 className="text-3xl font-extrabold sm:text-4xl tracking-tight">Need help identifying your ideal capacity?</h2>
+              <p className="mt-4 text-white/60 text-lg">
                 Request a technical consultation to estimate your load requirements and find the right generator series.
               </p>
               <Button
                 nativeButton={false}
                 render={<Link href="/contact" />}
                 size="lg"
-                className="mt-6 rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white"
+                className="group mt-10 rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-xl shadow-[var(--brand-orange)]/30 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/50 transition-all duration-300 font-bold"
               >
-                Request Product Consultation <ArrowRight className="size-4" />
+                Request Product Consultation <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
           </div>
