@@ -51,16 +51,7 @@ export function Preloader() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Auto-dismiss on small viewports
-  useEffect(() => {
-    try {
-      if (typeof window !== "undefined" && window.innerWidth <= 480) {
-        dismiss();
-      }
-    } catch {
-      /* ignore */
-    }
-  }, []);
+
 
   // Render nothing on the server or before mount to avoid blocking when JS is absent
   if (!mounted) return null;
