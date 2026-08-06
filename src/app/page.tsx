@@ -176,7 +176,106 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-        <LayeredWave fill="var(--secondary)" className="opacity-30" />
+        <LayeredWave fill="var(--background)" className="opacity-30" />
+      </section>
+
+      {/* ===== PREMIUM FOUNDERS STORYTELLING ===== */}
+      <section className="relative overflow-hidden bg-background py-24 sm:py-32">
+        {/* Engineering Background Details */}
+        <div className="absolute inset-0 engineering-grid opacity-[0.03]" aria-hidden="true" />
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-[var(--brand-orange)]/[0.03] rounded-full blur-[120px]" aria-hidden="true" />
+        <div className="absolute bottom-1/4 right-0 w-[600px] h-[600px] bg-primary/[0.04] rounded-full blur-[120px]" aria-hidden="true" />
+
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <SectionHeader
+            eyebrow="Meet the People Behind the Innovation"
+            title="Real engineers. Real innovation. Built in Ethiopia."
+            description="Behind every Fedho Power Solution generator is a passionate team dedicated to solving Ethiopia's electricity challenges through engineering, innovation, and local manufacturing."
+          />
+
+          <div className="mt-16 space-y-24 lg:space-y-32">
+            {/* Story 1: Fedesa */}
+            <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
+              <FadeIn direction="left" className="relative group">
+                <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-[var(--brand-orange)]/15 via-primary/5 to-transparent blur-2xl transition-all duration-700 group-hover:from-[var(--brand-orange)]/25" aria-hidden="true" />
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl ring-1 ring-black/5 aspect-[4/3]">
+                  <Image
+                    src="/media/founders/fedesa_with_prime_minster_dr_abiy_ahmed.jpg"
+                    alt="CEO Fedesa Shuma presenting to Ethiopian Prime Minister Dr. Abiy Ahmed"
+                    width={900}
+                    height={675}
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
+                  
+                  {/* Floating Badge */}
+                  <div className="absolute bottom-6 left-6 z-20">
+                    <div className="flex items-center gap-3 rounded-2xl bg-white/10 p-3 pr-5 backdrop-blur-md ring-1 ring-white/20 shadow-xl">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--brand-orange)]">
+                        <CheckCircle2 className="size-5 text-white" />
+                      </div>
+                      <p className="text-sm font-bold tracking-wide text-white">Presented to Ethiopian Prime Minister</p>
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+              
+              <FadeIn direction="right" delay={0.2} className="lg:pl-8">
+                <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--brand-orange)]">Visionary Leadership</p>
+                <h3 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">Fedesa Shuma</h3>
+                <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                  Fedesa Shuma leads the company&apos;s mission of building reliable clean-energy technologies in Ethiopia. Through innovation and entrepreneurship, Fedho Power Solution has gained national recognition and continues developing locally engineered hybrid power systems.
+                </p>
+                <div className="mt-8 grid sm:grid-cols-2 gap-4">
+                  {["Leadership", "Innovation", "Entrepreneurship", "National Recognition"].map((highlight) => (
+                    <div key={highlight} className="flex items-center gap-3">
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--brand-orange)]/10">
+                        <CheckCircle2 className="size-3.5 text-[var(--brand-orange)]" />
+                      </div>
+                      <span className="text-sm font-semibold text-foreground/80">{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Story 2: Henok */}
+            <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
+              <FadeIn direction="left" delay={0.2} className="lg:pr-8 order-2 lg:order-1">
+                <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-primary">Engineering Excellence</p>
+                <h3 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">Henok Amanuel</h3>
+                <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                  Henok Amanuel leads the technical development of Fedho&apos;s hybrid power systems. From research and prototyping to manufacturing and testing, the engineering team focuses on delivering efficient, reliable, and intelligent energy solutions designed for Ethiopian conditions.
+                </p>
+                <div className="mt-8 grid sm:grid-cols-2 gap-4">
+                  {["Engineering", "Research", "Manufacturing", "Product Development", "Technical Innovation"].map((highlight) => (
+                    <div key={highlight} className="flex items-center gap-3">
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10">
+                        <CheckCircle2 className="size-3.5 text-primary" />
+                      </div>
+                      <span className="text-sm font-semibold text-foreground/80">{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+
+              <FadeIn direction="right" className="relative group order-1 lg:order-2">
+                <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-primary/15 via-[var(--brand-orange)]/5 to-transparent blur-2xl transition-all duration-700 group-hover:from-primary/25" aria-hidden="true" />
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl ring-1 ring-black/5 aspect-[4/3]">
+                  <Image
+                    src="/media/installations/henok_when_building_generators_in_lab.jpg"
+                    alt="CTO Henok Amanuel working in the engineering lab"
+                    width={900}
+                    height={675}
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+        <OrganicCurve fill="hsl(var(--secondary) / 0.3)" />
       </section>
 
       {/* ===== TECHNOLOGY — Workflow Visualization ===== */}
@@ -489,48 +588,6 @@ export default function HomePage() {
         <AbstractCurve fill="var(--background)" className="rotate-180 -scale-x-100" />
       </section>
 
-      {/* ===== FOUNDERS — Side by Side ===== */}
-      <Section className="relative pb-24 sm:pb-32">
-        <SectionHeader
-          eyebrow="Leadership"
-          title="Meet the Founders"
-          description="Fedho combines entrepreneurial vision and technical engineering expertise."
-        />
-        <div className="grid gap-8 lg:grid-cols-2 auto-rows-fr">
-          {founders.map((founder, i) => (
-            <FadeIn key={founder.name} delay={i * 0.15} direction={i === 0 ? "left" : "right"}>
-              <div className="premium-card group overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/[0.03] ring-1 ring-black/[0.06] transition-all duration-700 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/5 hover:-translate-y-1 flex flex-col h-full">
-                <div className="relative overflow-hidden flex-none aspect-[4/3]">
-                  <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700 z-10" />
-                  <Image
-                    src={founder.image}
-                    alt={founder.imageAlt}
-                    width={900}
-                    height={600}
-                    className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-20" />
-                  <div className="absolute bottom-8 left-8 z-30">
-                    <h3 className="text-3xl font-extrabold text-white tracking-tight">{founder.name}</h3>
-                    <p className="mt-2 text-sm font-semibold tracking-widest text-[var(--brand-orange)] uppercase">{founder.role}</p>
-                  </div>
-                </div>
-                <div className="p-8 flex flex-col grow">
-                  <p className="text-base text-muted-foreground leading-relaxed">{founder.overview}</p>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {founder.focus.map((f) => (
-                      <Badge key={f} variant="secondary" className="text-xs rounded-lg bg-secondary/50 hover:bg-secondary/70 text-foreground transition-colors px-3 py-1">
-                        {f}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-        <DiagonalCurve fill="hsl(var(--secondary))" className="opacity-20 -scale-x-100" />
-      </Section>
 
       {/* ===== AWARDS ===== */}
       <section className="relative overflow-hidden bg-gradient-to-b from-secondary/20 to-background py-20 sm:py-28">
