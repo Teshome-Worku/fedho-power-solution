@@ -207,6 +207,57 @@ export default function TechnologyPage() {
         </div>
       </section>
 
+      {/* ===== LOCAL MANUFACTURING & R&D ===== */}
+      <section className="relative overflow-hidden bg-white py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] items-center">
+            <FadeIn direction="left">
+              <div className="relative group">
+                <div className="absolute -inset-4 rounded-3xl bg-[var(--brand-orange)]/10 blur-2xl transition-all duration-500 group-hover:bg-[var(--brand-orange)]/15" aria-hidden="true" />
+                <div className="relative overflow-hidden rounded-[2rem] shadow-2xl ring-1 ring-black/5 aspect-[4/3]">
+                  <Image
+                    src="/media/installations/henok_when_building_generators_in_lab.jpg"
+                    alt="CTO Henok Amanuel building FP Hybrid Generators in the engineering laboratory"
+                    width={900}
+                    height={675}
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <p className="text-sm font-semibold text-white leading-relaxed">
+                      CTO Henok Amanuel engineering FP Hybrid Generators in our laboratory.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+            <FadeIn direction="right" delay={0.15}>
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--brand-orange)]">Research & Development</p>
+              <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+                Engineered and Built in Ethiopia
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+                We don’t just import boxes; we design, build, and optimize hybrid power systems right here in Ethiopia.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                Our engineering team rigorously tests every component under local grid and climate conditions to ensure maximum reliability and longevity. By controlling the manufacturing process, we guarantee technical excellence and rapid after-sales support.
+              </p>
+              
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                <div className="rounded-xl bg-secondary/50 p-4 ring-1 ring-black/[0.04]">
+                  <h4 className="text-2xl font-black text-primary">100%</h4>
+                  <p className="mt-1 text-xs font-bold uppercase tracking-wider text-[var(--brand-orange)]">Local Engineering</p>
+                </div>
+                <div className="rounded-xl bg-secondary/50 p-4 ring-1 ring-black/[0.04]">
+                  <h4 className="text-2xl font-black text-primary">In-House</h4>
+                  <p className="mt-1 text-xs font-bold uppercase tracking-wider text-[var(--brand-orange)]">R&D Laboratory</p>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
       {/* ===== HYBRID vs DIESEL COMPARISON ===== */}
       <Section>
         <SectionHeader

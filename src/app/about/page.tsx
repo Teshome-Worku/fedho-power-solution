@@ -195,13 +195,21 @@ export default function AboutPage() {
                 From Power Outages to Power Innovation
               </h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">{founderStory.intro}</p>
-              <Image
-                src="/media/products_and_generators/products_with_fedesa_shuma.jpg"
-                alt="CEO with FP Hybrid Generators"
-                width={600}
-                height={400}
-                className="mt-8 rounded-2xl object-cover shadow-xl"
-              />
+              <div className="group relative mt-8 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5">
+                <Image
+                  src="/media/founders/fedesa_with_prime_minster_dr_abiy_ahmed.jpg"
+                  alt="CEO Fedesa Shuma presenting to Ethiopian Prime Minister Dr. Abiy Ahmed"
+                  width={600}
+                  height={400}
+                  className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute bottom-4 left-5 right-5">
+                  <p className="text-sm font-semibold text-white leading-snug">
+                    Presenting Fedho&apos;s innovation to Ethiopian Prime Minister Dr. Abiy Ahmed.
+                  </p>
+                </div>
+              </div>
             </FadeIn>
             <div className="space-y-5">
               {founderStory.sections.map((part, i) => (
