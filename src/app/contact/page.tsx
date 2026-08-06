@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Building2, Mail, MapPin, Phone, Send } from "lucide-react";
 
@@ -32,10 +33,14 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Request a Quote or Consultation"
-        description="Share your requirements and the team will help identify the right generator capacity and installation approach."
+        description="Share your requirements and our engineering team will help identify the right generator capacity and installation approach."
       />
 
-      <Section>
+      <Section className="relative bg-secondary/20">
+        {/* Abstract Background Illustration */}
+        <div className="absolute inset-0 engineering-grid opacity-[0.03]" aria-hidden="true" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--brand-orange)]/5 rounded-full blur-[100px]" aria-hidden="true" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" aria-hidden="true" />
         <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] items-start">
 
           {/* ===== LEFT: Contact Info ===== */}
@@ -56,28 +61,56 @@ export default function ContactPage() {
               </div>
 
               {/* Contact channels */}
-              <div className="rounded-2xl bg-white p-7 ring-1 ring-black/[0.06] shadow-sm">
+              <div className="rounded-2xl bg-white p-7 ring-1 ring-black/[0.06] shadow-md hover:shadow-lg transition-all duration-300">
                 <h3 className="text-sm font-bold text-foreground mb-5">Contact Channels</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-secondary shrink-0">
-                      <Phone className="size-4 text-muted-foreground" />
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-secondary shrink-0">
+                      <Phone className="size-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">Phone</p>
+                      <p className="text-[11px] font-bold uppercase tracking-widest text-[var(--brand-orange)]">Sales & Support</p>
                       {contactInfo.phone.values.map((phone) => (
-                        <p key={phone} className="text-sm text-foreground">{phone}</p>
+                        <p key={phone} className="text-sm font-bold text-foreground">{phone}</p>
                       ))}
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-secondary shrink-0">
-                      <Mail className="size-4 text-muted-foreground" />
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-green-50 shrink-0">
+                      <Phone className="size-5 text-green-600" />
                     </div>
                     <div>
-                      <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">Email</p>
-                      <p className="text-sm text-foreground">{contactInfo.email.value}</p>
+                      <p className="text-[11px] font-bold uppercase tracking-widest text-green-600">WhatsApp</p>
+                      <p className="text-sm font-bold text-foreground">{contactInfo.phone.values[0]}</p>
                     </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-secondary shrink-0">
+                      <Mail className="size-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-widest text-[var(--brand-orange)]">Email Us</p>
+                      <p className="text-sm font-bold text-foreground">{contactInfo.email.value}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Business Hours */}
+              <div className="rounded-2xl bg-white p-7 ring-1 ring-black/[0.06] shadow-md hover:shadow-lg transition-all duration-300">
+                <h3 className="text-sm font-bold text-foreground mb-4">Business Hours</h3>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-muted-foreground">Monday - Friday</span>
+                    <span className="font-semibold text-foreground">8:30 AM - 5:30 PM</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-muted-foreground">Saturday</span>
+                    <span className="font-semibold text-foreground">9:00 AM - 1:00 PM</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-muted-foreground">Sunday</span>
+                    <span className="font-semibold text-[var(--brand-orange)]">Closed</span>
                   </div>
                 </div>
               </div>
@@ -202,7 +235,7 @@ export default function ContactPage() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-lg shadow-[var(--brand-orange)]/20 hover:brightness-110 transition-all"
+                  className="w-full rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-xl shadow-[var(--brand-orange)]/20 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/40 hover:-translate-y-0.5 transition-all duration-300 font-bold"
                 >
                   <Send className="size-4 mr-2" />
                   Submit Inquiry
