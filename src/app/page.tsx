@@ -3,14 +3,17 @@ import {
   BatteryCharging,
   Building2,
   CheckCircle2,
+  Cpu,
   Factory,
   GraduationCap,
   Heart,
   Home,
   Hotel,
   Landmark,
-
+  Plug,
   Sun,
+  Volume2,
+  Wrench,
   Zap,
 } from "lucide-react";
 import type { Metadata } from "next";
@@ -31,6 +34,7 @@ import {
   LayeredWave,
   OrganicCurve,
   SlantedDivider,
+  WaveDivider,
 } from "@/components/ui/dividers";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { Section, SectionHeader } from "@/components/shared/section";
@@ -227,15 +231,110 @@ export default function HomePage() {
           <Button
             nativeButton={false}
             render={<Link href="/technology" />}
-            className="rounded-xl bg-primary text-white hover:bg-primary/90"
+            className="group rounded-xl bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all duration-300"
             size="lg"
           >
             Explore Technology
-            <ArrowRight className="size-4" />
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
           </Button>
         </div>
         <SlantedDivider fill="var(--background)" />
       </Section>
+
+      {/* ===== ENGINEERING EXCELLENCE — Featured Product Showcase ===== */}
+      <section className="relative overflow-hidden bg-background py-24 sm:py-32">
+        {/* Subtle engineering grid background */}
+        <div className="absolute inset-0 engineering-grid opacity-[0.03]" aria-hidden="true" />
+        <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-[var(--brand-orange)]/[0.04] rounded-full blur-[120px] translate-x-1/3 -translate-y-1/2" aria-hidden="true" />
+
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-16 lg:grid-cols-2">
+            {/* Image Side */}
+            <FadeIn direction="left">
+              <div className="relative group">
+                <div className="absolute -inset-8 rounded-[2rem] bg-gradient-to-br from-[var(--brand-orange)]/10 via-primary/5 to-transparent blur-2xl transition-all duration-700 group-hover:from-[var(--brand-orange)]/15" aria-hidden="true" />
+                <div className="relative">
+                  <Image
+                    src="/media/products_and_generators/product3.jpg"
+                    alt="FP Hybrid Generator — flagship product"
+                    width={800}
+                    height={600}
+                    className="relative rounded-3xl object-cover shadow-2xl ring-1 ring-black/5 transition-transform duration-1000 group-hover:scale-[1.02]"
+                  />
+                  {/* Floating spec badge */}
+                  <div className="absolute -bottom-6 -right-4 hidden rounded-2xl bg-white p-5 shadow-2xl ring-1 ring-black/5 lg:block transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-12px_rgba(0,0,0,0.15)]">
+                    <p className="text-3xl font-extrabold tracking-tight text-primary">2–600</p>
+                    <p className="text-xs font-bold tracking-widest text-[var(--brand-orange)] uppercase">KW Range</p>
+                  </div>
+                  {/* Floating made-in badge */}
+                  <div className="absolute -top-4 -left-4 hidden rounded-xl bg-[var(--brand-blue)] px-4 py-2.5 shadow-xl lg:block">
+                    <p className="text-[10px] font-bold tracking-widest text-white uppercase">🇪🇹 Made in Ethiopia</p>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Content Side */}
+            <FadeIn direction="right" delay={0.15}>
+              <div>
+                <p className="mb-5 text-xs font-bold uppercase tracking-[0.25em] text-[var(--brand-orange)]">
+                  Engineering Excellence
+                </p>
+                <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
+                  The FP Hybrid Generator
+                </h2>
+                <p className="mt-6 text-lg leading-relaxed text-muted-foreground max-w-lg">
+                  A locally designed and assembled hybrid power system that combines solar energy, battery storage, and grid charging into one silent, efficient unit.
+                </p>
+
+                {/* Technical Highlights Grid */}
+                <div className="mt-10 grid gap-4 sm:grid-cols-2">
+                  {[
+                    { icon: Zap, title: "Hybrid Technology", desc: "Solar + Battery + Grid in one unit" },
+                    { icon: Volume2, title: "Silent Operation", desc: "Noise-free power for any environment" },
+                    { icon: Sun, title: "Solar Charging", desc: "Built-in solar panel integration" },
+                    { icon: BatteryCharging, title: "Battery Storage", desc: "Intelligent energy management" },
+                    { icon: Plug, title: "Grid Charging", desc: "Seamless utility power backup" },
+                    { icon: Wrench, title: "Local Assembly", desc: "Designed & built in Addis Ababa" },
+                  ].map((spec) => (
+                    <div key={spec.title} className="group/spec flex items-start gap-4 rounded-2xl bg-secondary/30 p-4 ring-1 ring-black/[0.03] transition-all duration-300 hover:bg-white hover:shadow-md hover:ring-[var(--brand-orange)]/20">
+                      <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white shadow-sm ring-1 ring-black/5 shrink-0 transition-colors duration-300 group-hover/spec:bg-[var(--brand-orange)]/10">
+                        <spec.icon className="size-5 text-primary transition-colors duration-300 group-hover/spec:text-[var(--brand-orange)]" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-foreground">{spec.title}</p>
+                        <p className="mt-0.5 text-xs text-muted-foreground">{spec.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-10 flex gap-4">
+                  <Button
+                    nativeButton={false}
+                    render={<Link href="/products" />}
+                    className="group rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-xl shadow-[var(--brand-orange)]/20 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/40 transition-all duration-300 font-bold"
+                    size="lg"
+                  >
+                    View All Products
+                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                  <Button
+                    nativeButton={false}
+                    render={<Link href="/contact" />}
+                    variant="outline"
+                    className="group rounded-xl hover:border-[var(--brand-orange)]/30 transition-all duration-300"
+                    size="lg"
+                  >
+                    Get a Quote
+                  </Button>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+        <WaveDivider />
+      </section>
 
       {/* ===== PRODUCTS — Premium Cards ===== */}
       <section className="relative overflow-hidden bg-background py-20 sm:py-28">

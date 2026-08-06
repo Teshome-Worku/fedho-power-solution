@@ -81,17 +81,18 @@ export default function AboutPage() {
             </div>
           </FadeIn>
           <FadeIn direction="right" delay={0.15}>
-            <div className="relative">
+            <div className="relative group">
+              <div className="absolute -inset-4 rounded-3xl bg-[var(--brand-orange)]/10 blur-2xl transition-all duration-500 group-hover:bg-[var(--brand-orange)]/15" aria-hidden="true" />
               <Image
                 src="/media/products_and_generators/many_products_together.jpg"
                 alt="FP Hybrid Generators product lineup"
                 width={700}
                 height={500}
-                className="rounded-2xl object-cover shadow-2xl"
+                className="relative rounded-3xl object-cover shadow-2xl ring-1 ring-black/5"
               />
-              <div className="absolute -bottom-5 -left-5 hidden rounded-2xl bg-white p-4 shadow-xl ring-1 ring-black/5 lg:block">
-                <p className="text-2xl font-bold text-primary">Dec 2024</p>
-                <p className="text-xs text-muted-foreground">PLC Registered</p>
+              <div className="absolute -bottom-5 -left-5 hidden rounded-2xl bg-white p-5 shadow-xl ring-1 ring-black/5 lg:block transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <p className="text-3xl font-extrabold text-primary tracking-tight">Dec 2024</p>
+                <p className="text-xs font-bold tracking-widest text-[var(--brand-orange)] uppercase">PLC Registered</p>
               </div>
             </div>
           </FadeIn>
@@ -153,27 +154,28 @@ export default function AboutPage() {
         <div className="grid gap-8 lg:grid-cols-2 auto-rows-fr">
           {founders.map((founder, i) => (
             <FadeIn key={founder.name} delay={i * 0.15} direction={i === 0 ? "left" : "right"}>
-              <div className="premium-card group overflow-hidden rounded-2xl bg-white ring-1 ring-black/[0.06] flex flex-col h-full">
+              <div className="premium-card group overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/[0.03] ring-1 ring-black/[0.06] flex flex-col h-full transition-all duration-700 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/5 hover:-translate-y-1">
                 <div className="relative overflow-hidden flex-none aspect-[4/3]">
+                  <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700 z-10" />
                   <Image
                     src={founder.image}
                     alt={founder.imageAlt}
                     width={900}
                     height={600}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                  <div className="absolute bottom-5 left-6">
-                    <h3 className="text-xl font-bold text-white">{founder.name}</h3>
-                    <p className="text-sm text-white/80">{founder.role}</p>
-                    <Badge className="mt-2 bg-[var(--brand-orange)] text-white text-xs border-0">{founder.title}</Badge>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-20" />
+                  <div className="absolute bottom-6 left-6 z-30">
+                    <h3 className="text-2xl font-extrabold text-white tracking-tight">{founder.name}</h3>
+                    <p className="mt-1 text-sm font-semibold tracking-widest text-[var(--brand-orange)] uppercase">{founder.role}</p>
+                    <Badge className="mt-3 bg-white/10 text-white text-xs border-0 backdrop-blur-sm">{founder.title}</Badge>
                   </div>
                 </div>
-                <div className="p-6 flex flex-col grow">
-                  <p className="text-sm leading-relaxed text-muted-foreground">{founder.overview}</p>
-                  <div className="mt-5 flex flex-wrap gap-2">
+                <div className="p-8 flex flex-col grow">
+                  <p className="text-base leading-relaxed text-muted-foreground">{founder.overview}</p>
+                  <div className="mt-6 flex flex-wrap gap-2">
                     {founder.focus.map((f) => (
-                      <Badge key={f} variant="outline" className="text-xs rounded-lg">{f}</Badge>
+                      <Badge key={f} variant="secondary" className="text-xs rounded-lg bg-secondary/50 hover:bg-secondary/70 text-foreground transition-colors px-3 py-1">{f}</Badge>
                     ))}
                   </div>
                 </div>
@@ -251,20 +253,22 @@ export default function AboutPage() {
       </Section>
 
       {/* ===== CTA ===== */}
-      <Section className="pt-0">
+      <Section className="pt-0 pb-24">
         <ScaleIn>
-          <div className="relative overflow-hidden rounded-3xl bg-[var(--brand-blue)] px-8 py-14 text-white sm:px-14">
-            <div className="absolute top-0 right-0 w-72 h-72 bg-[var(--brand-orange)]/10 rounded-full blur-3xl" aria-hidden="true" />
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[var(--brand-blue)] via-[var(--brand-blue)] to-[#0a1628] px-8 py-20 text-white sm:px-16 shadow-2xl shadow-primary/20">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--brand-orange)]/15 rounded-full blur-[100px]" aria-hidden="true" />
+            <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-[80px]" aria-hidden="true" />
             <div className="relative max-w-2xl">
-              <h2 className="text-2xl font-bold sm:text-3xl">Want to power your future with us?</h2>
-              <p className="mt-3 text-white/70">Contact our team to find the right generator for your needs.</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-[var(--brand-orange)] mb-5">Get in Touch</p>
+              <h2 className="text-3xl font-extrabold sm:text-4xl tracking-tight">Want to power your future with us?</h2>
+              <p className="mt-4 text-white/60 text-lg">Contact our team to find the right generator for your needs.</p>
               <Button
                 nativeButton={false}
                 render={<Link href="/contact" />}
                 size="lg"
-                className="mt-6 rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white"
+                className="group mt-8 rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-xl shadow-[var(--brand-orange)]/30 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/50 transition-all duration-300 font-bold"
               >
-                Get in Touch <ArrowRight className="size-4" />
+                Get in Touch <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
           </div>

@@ -350,3 +350,36 @@
     background-position: 20px 0;
   }
 }
+
+/* ===== Engineering Grid Pattern ===== */
+.engineering-grid {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ===== Premium Card System ===== */
+.premium-card {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px -12px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Energy Glow ===== */
+.energy-glow {
+  box-shadow: 0 0 40px -10px var(--brand-orange);
+}
+
+/* ===== Floating Animation ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
