@@ -143,20 +143,20 @@ export const galleryItems: GalleryItem[] = [
     src: "/media/customers/dembi_dolo_university_bought.jpg",
     alt: "Dembi Dolo University customer",
     title: "Dembi Dolo University",
-    categories: ["customers"],
+    categories: ["customers", "installations"],
   },
   {
     id: "harme-clinic",
     src: "/media/customers/harme_clinic_partnership.jpg",
     alt: "Harme Clinic partnership",
     title: "Harme Clinic Partnership",
-    categories: ["customers"],
+    categories: ["customers", "installations"],
   },
   {
     id: "makina-yesus",
     src: "/media/customers/makina_yesus_saminar_partnership.jpg",
     alt: "Makina Yesus seminar partnership",
     title: "Makina Yesus Seminar Partnership",
-    categories: ["customers"],
+    categories: ["customers", "installations"],
   },
 ];
