@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -48,6 +48,71 @@ export function Navbar() {
             : "bg-white/60 backdrop-blur-md border-b border-white/30",
         )}
       >
+        {/* ===== PREMIUM TOP INFORMATION BAR ===== */}
+        <AnimatePresence initial={false}>
+          {!scrolled && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="hidden lg:block w-full bg-[#0a1628] border-b border-white/5 overflow-hidden"
+            >
+              <div className="mx-auto flex h-[38px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
+                
+                {/* Left Side: Contact Info */}
+                <div className="flex items-center text-[11px] font-medium text-white/80 tracking-wide">
+                  <a href="tel:+251917428514" className="flex items-center gap-1.5 hover:text-white group transition-colors">
+                    <Phone className="size-3.5 text-[var(--brand-orange)]" />
+                    <span className="group-hover:underline decoration-[var(--brand-orange)]/50 underline-offset-4">+251 917 428 514</span>
+                  </a>
+                  <span className="mx-4 h-3 w-px bg-white/20" aria-hidden="true" />
+                  <a href="mailto:info@fedhopowersolution.com" className="flex items-center gap-1.5 hover:text-white group transition-colors">
+                    <Mail className="size-3.5 text-[var(--brand-orange)]" />
+                    <span className="group-hover:underline decoration-[var(--brand-orange)]/50 underline-offset-4">info@fedhopowersolution.com</span>
+                  </a>
+                  <span className="mx-4 h-3 w-px bg-white/20" aria-hidden="true" />
+                  <div className="flex items-center gap-1.5 hover:text-white transition-colors cursor-default">
+                    <MapPin className="size-3.5 text-[var(--brand-orange)]" />
+                    <span>Bole Lemi, Addis Ababa, Ethiopia</span>
+                  </div>
+                </div>
+
+                {/* Right Side: Social Icons */}
+                <div className="flex items-center gap-4">
+                  {[
+                    { 
+                      icon: (props: any) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>, 
+                      href: "#", 
+                      label: "LinkedIn" 
+                    },
+                    { 
+                      icon: (props: any) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>, 
+                      href: "#", 
+                      label: "Facebook" 
+                    },
+                    { 
+                      icon: (props: any) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><line x1="22" x2="11" y1="2" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>, 
+                      href: "#", 
+                      label: "Telegram" 
+                    },
+                  ].map((social) => (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      aria-label={social.label}
+                      className="text-white/60 transition-all duration-300 hover:text-[var(--brand-orange)] hover:-translate-y-0.5 hover:scale-110"
+                    >
+                      <social.icon className="size-[15px]" />
+                    </a>
+                  ))}
+                </div>
+
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
