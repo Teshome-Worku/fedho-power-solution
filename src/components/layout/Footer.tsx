@@ -56,7 +56,7 @@ export function Footer() {
         <div className="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4 text-center lg:text-left">
           {/* Brand */}
           <div className="space-y-5">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center lg:justify-start gap-3">
               <Image
                 src="/media/logo/logo.jpg"
                 alt={`${siteConfig.name} logo`}
@@ -65,14 +65,14 @@ export function Footer() {
                 style={{ height: "auto" }}
                 className="rounded-xl object-cover ring-2 ring-white/10"
               />
-              <div>
+              <div className="text-left">
                 <p className="text-base font-bold">Fedho Power Solution</p>
                 <p className="text-xs text-white/60 font-medium">
                   Clean Energy Technology
                 </p>
               </div>
             </div>
-            <p className="text-sm leading-relaxed text-white/65 max-w-xs">
+            <p className="mx-auto lg:mx-0 text-sm leading-relaxed text-white/65 max-w-xs">
               Ethiopian clean-energy company specializing in silent hybrid power generators for homes, businesses, and institutions.
             </p>
           </div>
