@@ -62,11 +62,11 @@ export function Navbar() {
                 priority
               />
             </div>
-            <div className="hidden lg:block whitespace-nowrap">
-              <span className="block text-sm font-bold tracking-tight text-primary">
+            <div className="block whitespace-nowrap">
+              <span className="block text-[13px] sm:text-sm font-bold tracking-tight text-primary">
                 Fedho Power Solution
               </span>
-              <span className="block text-[11px] font-medium text-muted-foreground/70">
+              <span className="block text-[10px] sm:text-[11px] font-medium text-muted-foreground/70">
                 Clean Energy Technology
               </span>
             </div>
