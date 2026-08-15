@@ -191,7 +191,7 @@ export function HeroImageSlider({
   images,
   interval = 7000,
 }: {
-  images: { src: string; alt: string }[];
+  images: { src: string; alt: string; objectPosition?: string }[];
   interval?: number;
 }) {
   const [current, setCurrent] = useState(0);
@@ -205,21 +205,25 @@ export function HeroImageSlider({
   }, [images.length, interval]);
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-[var(--brand-blue)]">
-      <AnimatePresence mode="wait">
+    <div className="absolute inset-0 overflow-hidden bg-[#0a1128]">
+      <AnimatePresence>
         <motion.div
           key={current}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 1 }}
+          animate={{ opacity: 1, scale: 1.05 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0 animate-ken-burns"
+          transition={{ 
+            opacity: { duration: 1.2, ease: "easeInOut" },
+            scale: { duration: 10, ease: "linear" } 
+          }}
+          className="absolute inset-0 origin-center"
         >
           <Image
             src={images[current].src}
             alt={images[current].alt}
             fill
-            className="object-cover object-center"
+            className="object-cover"
+            style={{ objectPosition: images[current].objectPosition || "center center" }}
             priority={current === 0}
             fetchPriority={current === 0 ? "high" : "auto"}
             sizes="100vw"

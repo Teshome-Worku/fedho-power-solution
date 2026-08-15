@@ -11,28 +11,21 @@ import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/content/navigation";
 
 const heroImages = [
-  { src: "/media/products_and_generators/many_products_together.jpg", alt: "FP Hybrid Generators lineup" },
-  { src: "/media/products_and_generators/product_in_work.jpg", alt: "FP Generator in operation" },
-  { src: "/media/products_and_generators/product3.jpg", alt: "FP Commercial Generator" },
-  { src: "/media/installations/installation_photo.jpg", alt: "FP Generator installation" },
+  { src: "/media/products_and_generators/many_products_together.jpg", alt: "Fedho Power Solution Hybrid Generators Lineup", objectPosition: "80% center" },
+  { src: "/media/founders/henok_when_building_generators_in_lab.jpg", alt: "CTO Henok Amanuel engineering a hybrid generator in the lab", objectPosition: "60% center" },
+  { src: "/media/products_and_generators/product_in_work.jpg", alt: "Fedho Generator powering a commercial facility", objectPosition: "75% center" },
+  { src: "/media/installations/installation_photo.jpg", alt: "Installation of a hybrid power system", objectPosition: "center center" },
 ];
 
 export function HeroSection() {
   return (
-    <section className="relative isolate overflow-hidden min-h-[80vh] sm:min-h-screen flex items-center">
-      {/* Background image slider with Ken Burns */}
+    <section className="relative isolate overflow-hidden min-h-[75vh] sm:min-h-[80vh] lg:min-h-[85vh] flex items-center bg-[#0a1128]">
+      {/* Background image slider with refined crossfade */}
       <HeroImageSlider images={heroImages} interval={7000} />
 
-      {/* Cinematic gradient overlay — dark on the left for text readability, fully transparent on the right to show the product */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue)]/70 sm:from-[var(--brand-blue)]/95 via-[var(--brand-blue)]/40 sm:via-[var(--brand-blue)]/60 to-transparent sm:w-[85%]" />
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[var(--brand-blue)]/80 via-[var(--brand-blue)]/10 to-transparent" />
-
-      {/* Energy particles */}
-      <EnergyParticles />
-
-      {/* Glowing orb effects */}
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[var(--brand-orange)]/15 rounded-full blur-[120px] animate-glow-pulse" aria-hidden="true" />
-      <div className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-white/5 rounded-full blur-[100px]" aria-hidden="true" />
+      {/* Cinematic directional gradient — completely clear on the right so the generator product is 100% visible */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0a1128] via-[#0a1128]/80 to-transparent lg:w-[60%] sm:w-[80%]" />
+      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0a1128] via-[#0a1128]/5 to-transparent" />
 
       <div className="relative mx-auto flex w-full max-w-7xl items-center px-5 pt-[calc(72px+4rem)] pb-24 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
@@ -43,7 +36,7 @@ export function HeroSection() {
           </FadeIn>
 
           <FadeIn direction="up" delay={0.4} duration={0.8}>
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl lg:leading-[1.05]">
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-[4rem] lg:leading-[1.1]">
               Reliable{" "}
               <span className="gradient-text">Hybrid Power</span>{" "}
               Solutions
