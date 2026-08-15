@@ -10,7 +10,7 @@ import { siteConfig } from "@/content/navigation";
 
 // Portrait and ambiguous gallery shots are intentionally excluded: each slide must read as power technology at a glance.
 const heroImages = [
-  { src: "/media/hero/fedho-hybrid-system.png", alt: "Fedho 50 kW silent hybrid power system beside solar panels", objectPosition: "center center" },
+  { src: "/media/hero/fedho-hybrid-system.png", alt: "Fedho 50 kW silent hybrid power system beside solar panels", objectPosition: "80% center" },
   { src: "/media/products_and_generators/product2_at_EDI.jpg", alt: "Fedho hybrid generator installed at Ethiopian Defence University", objectPosition: "72% center" },
   { src: "/media/products_and_generators/product_in_work.jpg", alt: "Fedho generator powering a commercial facility", objectPosition: "70% center" },
 ];
