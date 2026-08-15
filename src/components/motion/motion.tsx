@@ -209,12 +209,12 @@ export function HeroImageSlider({
       <AnimatePresence>
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1 }}
-          animate={{ opacity: 1, scale: 1.05 }}
+          initial={{ opacity: 0, scale: 1.01 }}
+          animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ 
-            opacity: { duration: 1.2, ease: "easeInOut" },
-            scale: { duration: 10, ease: "linear" } 
+            opacity: { duration: 0.9, ease: "easeInOut" },
+            scale: { duration: 0.9, ease: "easeOut" } 
           }}
           className="absolute inset-0 origin-center"
         >
