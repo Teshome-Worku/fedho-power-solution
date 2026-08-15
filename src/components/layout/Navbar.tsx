@@ -42,10 +42,7 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-300 transform-gpu",
-          scrolled
-            ? "bg-white/95 backdrop-blur-xl border-b border-white/20 shadow-md"
-            : "bg-white/60 backdrop-blur-md border-b border-white/30",
+          "fixed inset-x-0 top-0 z-50 transition-all duration-300 transform-gpu bg-white shadow-sm border-b border-black/5"
         )}
       >
         {/* ===== PREMIUM TOP INFORMATION BAR ===== */}

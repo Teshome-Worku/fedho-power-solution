@@ -89,6 +89,17 @@ export default function HomePage() {
       {/* ===== HERO ===== */}
       <HeroSection />
 
+      {/* ===== PROUDLY DESIGNED IN ETHIOPIA STRIP ===== */}
+      <div className="relative bg-background pt-10 pb-6 hidden lg:block">
+        <div className="flex items-center justify-center gap-6 text-center">
+          <div className="h-[2px] w-24 bg-gradient-to-r from-transparent to-[var(--brand-orange)]/60" />
+          <p className="text-base font-bold text-primary tracking-wide">
+            Proudly Designed & Built in <span className="text-[var(--brand-orange)]">Ethiopia</span>
+          </p>
+          <div className="h-[2px] w-24 bg-gradient-to-l from-transparent to-[var(--brand-orange)]/60" />
+        </div>
+      </div>
+
       {/* ===== ABOUT — Image Left, Text Right ===== */}
       <Section id="about">
         <div className="grid items-center gap-12 lg:grid-cols-2">

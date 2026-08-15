@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Zap, Sun, ShieldCheck, Settings } from "lucide-react";
 import Link from "next/link";
 
 import { motion } from "framer-motion";
@@ -27,8 +27,8 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-[#0a1128] via-[#0a1128]/80 to-transparent lg:w-[60%] sm:w-[80%]" />
       <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0a1128] via-[#0a1128]/5 to-transparent" />
 
-      <div className="relative mx-auto flex w-full max-w-7xl items-center px-5 pt-[calc(72px+4rem)] pb-24 sm:px-6 lg:px-8">
-        <div className="max-w-2xl">
+      <div className="relative mx-auto flex w-full max-w-7xl flex-col px-5 pt-[calc(72px+4rem)] h-full z-20 sm:px-6 lg:px-8">
+        <div className="max-w-2xl flex-1 flex flex-col justify-center pb-8 sm:pb-12">
           <FadeIn direction="up" delay={0.2} duration={0.8}>
             <Badge className="mb-6 rounded-full bg-white/10 text-white/90 border border-white/20 px-4 py-1.5 text-xs font-semibold backdrop-blur-sm">
               🇪🇹 Powering Ethiopia&apos;s Future
@@ -75,9 +75,9 @@ export function HeroSection() {
             </div>
           </FadeIn>
 
-          {/* Trust badges */}
+          {/* Trust badges fallback for tablet */}
           <FadeIn direction="up" delay={1.0} duration={0.8}>
-            <div className="mt-12 hidden sm:flex flex-wrap gap-x-6 gap-y-3">
+            <div className="mt-12 hidden sm:flex lg:hidden flex-wrap gap-x-6 gap-y-3">
               {[
                 "Made in Ethiopia",
                 "Silent Hybrid Technology",
@@ -96,6 +96,30 @@ export function HeroSection() {
             </div>
           </FadeIn>
         </div>
+
+        {/* Premium Feature Strip matching the reference */}
+        <FadeIn delay={1.2} duration={0.8} className="w-full pb-10 hidden lg:block">
+          <div className="grid grid-cols-4 gap-6 rounded-[2rem] bg-white/5 backdrop-blur-xl border border-white/10 p-6 shadow-2xl">
+            {[
+              { icon: Zap, title: "Silent Technology", desc: "Low noise. High performance." },
+              { icon: Sun, title: "Solar + Grid Charging", desc: "Intelligent hybrid energy management." },
+              { icon: ShieldCheck, title: "Built in Ethiopia", desc: "Locally assembled with global quality standards." },
+              { icon: Settings, title: "2kW – 500kW", desc: "Power solutions for every need and scale." }
+            ].map((feature, i) => (
+              <div key={i} className="flex items-start gap-4 group cursor-default">
+                <div className="flex-shrink-0 mt-1">
+                  <div className="flex items-center justify-center size-10 rounded-full border border-white/20 text-[var(--brand-orange)] transition-colors group-hover:bg-[var(--brand-orange)]/10 group-hover:border-[var(--brand-orange)]/50">
+                    <feature.icon className="size-5" />
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-white text-sm font-bold tracking-tight">{feature.title}</h4>
+                  <p className="text-white/60 text-xs mt-1 leading-relaxed">{feature.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
       </div>
 
       {/* Scroll indicator */}
