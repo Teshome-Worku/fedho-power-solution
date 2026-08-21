@@ -191,7 +191,7 @@ export function HeroImageSlider({
   images,
   interval = 7000,
 }: {
-  images: { src: string; alt: string; objectPosition?: string }[];
+  images: { src: string; alt: string; objectPosition?: string; mobileObjectPosition?: string }[];
   interval?: number;
 }) {
   const [current, setCurrent] = useState(0);
@@ -209,21 +209,22 @@ export function HeroImageSlider({
       <AnimatePresence>
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1 }}
-          animate={{ opacity: 1, scale: 1.03 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ 
-            opacity: { duration: 1.2, ease: "easeInOut" },
-            scale: { duration: interval / 1000, ease: "linear" } 
-          }}
-          className="absolute inset-0 origin-center"
+          transition={{ opacity: { duration: 0.9, ease: "easeInOut" } }}
+          className="absolute inset-0"
         >
           <Image
             src={images[current].src}
             alt={images[current].alt}
             fill
-            className="object-cover"
-            style={{ objectPosition: images[current].objectPosition || "center center" }}
+            className="hero-slide-image object-cover"
+            style={{
+              objectPosition: images[current].objectPosition || "center center",
+              "--hero-desktop-position": images[current].objectPosition || "center center",
+              "--hero-mobile-position": images[current].mobileObjectPosition || images[current].objectPosition || "center center",
+            } as React.CSSProperties}
             priority={current === 0}
             fetchPriority={current === 0 ? "high" : "auto"}
             sizes="100vw"

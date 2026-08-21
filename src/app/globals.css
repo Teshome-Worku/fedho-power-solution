@@ -223,6 +223,17 @@
   animation: kenBurns 20s ease-in-out infinite alternate;
 }
 
+/* Hero photographs use per-slide focal points, with no scale or zoom animation. */
+.hero-slide-image {
+  object-position: var(--hero-mobile-position) !important;
+}
+
+@media (min-width: 640px) {
+  .hero-slide-image {
+    object-position: var(--hero-desktop-position) !important;
+  }
+}
+
 .animate-hero-float {
   animation: heroFloat 6s ease-in-out infinite;
 }
