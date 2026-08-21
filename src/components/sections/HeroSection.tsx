@@ -25,12 +25,12 @@ export function HeroSection() {
             <Badge className="mb-5 w-fit rounded-full border border-white/35 bg-[#061a34]/35 px-3.5 py-1.5 text-[0.68rem] font-bold tracking-[0.12em] text-white shadow-sm backdrop-blur-sm">BUILT IN ETHIOPIA</Badge>
           </FadeIn>
           <FadeIn direction="up" delay={0.3} duration={0.7}>
-            <h1 className="max-w-[10ch] text-[2.6rem] font-bold leading-[1.04] tracking-[-0.05em] text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.35)] sm:text-5xl lg:text-[3.65rem]">
+            <h1 className="max-w-[8ch] text-[2.25rem] font-bold leading-[1.04] tracking-[-0.05em] text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.35)] sm:max-w-[10ch] sm:text-5xl lg:text-[3.65rem]">
               Reliable <span className="text-[var(--brand-orange)]">Hybrid</span> Power
             </h1>
           </FadeIn>
           <FadeIn direction="up" delay={0.45} duration={0.7}>
-            <p className="mt-5 max-w-sm text-[0.98rem] leading-relaxed text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] sm:text-[1.05rem]">Silent, intelligent power systems built for a stronger tomorrow.</p>
+            <p className="mt-4 max-w-[15rem] text-sm leading-relaxed text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] sm:mt-5 sm:max-w-sm sm:text-[1.05rem]">Silent, intelligent power systems built for a stronger tomorrow.</p>
           </FadeIn>
           <FadeIn direction="up" delay={0.6} duration={0.7}>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
