@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Building2, Mail, MapPin, Phone, Send } from "lucide-react";
+import { Building2, Mail, MapPin, Phone } from "lucide-react";
 
 import { FacebookIcon, LinkedinIcon, TiktokIcon, TelegramIcon } from "@/components/ui/social-icons";
 import { FadeIn } from "@/components/motion/motion";
+import { ContactInquiryForm } from "@/components/pages/ContactInquiryForm";
 import { PageHero, Section } from "@/components/shared/section";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { contactInfo, productInterestOptions } from "@/content/contact";
+import { contactInfo } from "@/content/contact";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -38,10 +36,10 @@ export default function ContactPage() {
 
       <Section className="relative bg-secondary/20">
         {/* Abstract Background Illustration */}
-        <div className="absolute inset-0 engineering-grid opacity-[0.03]" aria-hidden="true" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--brand-orange)]/5 rounded-full blur-[100px]" aria-hidden="true" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" aria-hidden="true" />
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] items-start">
+        <div className="pointer-events-none absolute inset-0 engineering-grid opacity-[0.03]" aria-hidden="true" />
+        <div className="pointer-events-none absolute top-0 right-0 w-96 h-96 bg-[var(--brand-orange)]/5 rounded-full blur-[100px]" aria-hidden="true" />
+        <div className="pointer-events-none absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" aria-hidden="true" />
+        <div className="relative z-10 grid gap-10 lg:grid-cols-[1fr_1.2fr] items-start">
 
           {/* ===== LEFT: Contact Info ===== */}
           <FadeIn direction="left">
@@ -71,7 +69,7 @@ export default function ContactPage() {
                     <div>
                       <p className="text-[11px] font-bold uppercase tracking-widest text-[var(--brand-orange)]">Sales & Support</p>
                       {contactInfo.phone.values.map((phone) => (
-                        <p key={phone} className="text-sm font-bold text-foreground">{phone}</p>
+                        <a key={phone} href={`tel:+251${phone.slice(1)}`} className="block text-sm font-bold text-foreground transition-colors hover:text-[var(--brand-orange)]">{phone}</a>
                       ))}
                     </div>
                   </div>
@@ -81,7 +79,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-[11px] font-bold uppercase tracking-widest text-green-600">WhatsApp</p>
-                      <p className="text-sm font-bold text-foreground">{contactInfo.phone.values[0]}</p>
+                      <a href={`https://wa.me/251${contactInfo.phone.values[0].slice(1)}`} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-foreground transition-colors hover:text-green-600">{contactInfo.phone.values[0]}</a>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -90,7 +88,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-[11px] font-bold uppercase tracking-widest text-[var(--brand-orange)]">Email Us</p>
-                      <p className="text-sm font-bold text-foreground">{contactInfo.email.value}</p>
+                      <a href={`mailto:${contactInfo.email.value}`} className="text-sm font-bold text-foreground transition-colors hover:text-[var(--brand-orange)]">{contactInfo.email.value}</a>
                     </div>
                   </div>
                 </div>
@@ -147,100 +145,7 @@ export default function ContactPage() {
               <p className="text-sm text-muted-foreground mb-7">
                 Fill in your details and our team will get back to you shortly.
               </p>
-              <form className="space-y-5" action="#" method="post">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="fullName" className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                      Full Name *
-                    </Label>
-                    <Input
-                      id="fullName"
-                      name="fullName"
-                      required
-                      placeholder="Your full name"
-                      className="rounded-xl"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="company" className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                      Company / Organization
-                    </Label>
-                    <Input
-                      id="company"
-                      name="company"
-                      placeholder="Optional"
-                      className="rounded-xl"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                      Email *
-                    </Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="you@example.com"
-                      className="rounded-xl"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                      Phone
-                    </Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      placeholder="Your phone number"
-                      className="rounded-xl"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="interest" className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                    Product Interest
-                  </Label>
-                  <select
-                    id="interest"
-                    name="interest"
-                    className="h-10 w-full rounded-xl border border-input bg-transparent px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>Select a product series</option>
-                    {productInterestOptions.map((item) => (
-                      <option key={item} value={item}>{item}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message" className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                    Project Requirements *
-                  </Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    required
-                    className="min-h-32 rounded-xl resize-none"
-                    placeholder="Describe your load requirements, application context, and preferred installation timeline."
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full rounded-xl bg-gradient-to-r from-[var(--brand-orange)] to-[var(--brand-orange-light)] text-white shadow-xl shadow-[var(--brand-orange)]/20 hover:shadow-2xl hover:shadow-[var(--brand-orange)]/40 hover:-translate-y-0.5 transition-all duration-300 font-bold"
-                >
-                  <Send className="size-4 mr-2" />
-                  Submit Inquiry
-                </Button>
-              </form>
+              <ContactInquiryForm />
             </div>
           </FadeIn>
         </div>
