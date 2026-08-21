@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { siteConfig } from "@/content/navigation";
 
-const defaultSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const defaultSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? siteConfig.url;
 
 function withBaseUrl(path: string) {
     const cleanPath = path.startsWith("/") ? path : `/${path}`;
@@ -55,10 +55,10 @@ export function createPageMetadata({
             locale: "en_US",
             images: [
                 {
-                    url: withBaseUrl("/media/logo/logo.jpg"),
-                    width: 1200,
-                    height: 630,
-                    alt: `${siteConfig.name} logo`,
+                    url: withBaseUrl("/media/hero/fedho-hybrid-system.png"),
+                    width: 1672,
+                    height: 941,
+                    alt: "Fedho 50 kW silent hybrid power system with solar panels",
                 },
             ],
         },
@@ -66,7 +66,7 @@ export function createPageMetadata({
             card: "summary_large_image",
             title,
             description,
-            images: [withBaseUrl("/media/logo/logo.jpg")],
+            images: [withBaseUrl("/media/hero/fedho-hybrid-system.png")],
             creator: "@FedhoPower",
         },
         robots: {
@@ -86,30 +86,40 @@ export function createPageMetadata({
 export function createOrgSchema() {
     return {
         "@context": "https://schema.org",
-        "@type": ["Organization", "LocalBusiness"],
-        name: siteConfig.name,
-        description: siteConfig.description,
-        url: defaultSiteUrl,
-        logo: withBaseUrl("/media/logo/logo.jpg"),
-        image: withBaseUrl("/media/logo/logo.jpg"),
-        address: {
-            "@type": "PostalAddress",
-            addressLocality: "Addis Ababa",
-            addressCountry: "Ethiopia",
-            streetAddress: "Bole Lemi",
-        },
-        contactPoint: {
-            "@type": "ContactPoint",
-            telephone: "+251917428514",
-            contactType: "customer service",
-            areaServed: "ET",
-            availableLanguage: ["English", "Amharic"],
-        },
-        sameAs: [
-            "https://www.linkedin.com/in/fedho-power-solution-plc-014a7a3a1/",
-            "https://web.facebook.com/fedhopowersolution",
-            "https://www.tiktok.com/@fedho2319796111699",
-            "https://t.me/+lSw2LwIYjLExOWE0",
+        "@graph": [
+            {
+                "@type": ["Organization", "LocalBusiness"],
+                name: siteConfig.name,
+                description: siteConfig.description,
+                url: defaultSiteUrl,
+                logo: withBaseUrl("/media/logo/logo.jpg"),
+                image: withBaseUrl("/media/hero/fedho-hybrid-system.png"),
+                address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Addis Ababa",
+                    addressCountry: "Ethiopia",
+                    streetAddress: "Bole Lemi",
+                },
+                contactPoint: {
+                    "@type": "ContactPoint",
+                    telephone: "+251917428514",
+                    contactType: "customer service",
+                    areaServed: "ET",
+                    availableLanguage: ["English", "Amharic"],
+                },
+                sameAs: [
+                    "https://www.linkedin.com/in/fedho-power-solution-plc-014a7a3a1/",
+                    "https://web.facebook.com/fedhopowersolution",
+                    "https://www.tiktok.com/@fedho2319796111699",
+                    "https://t.me/+lSw2LwIYjLExOWE0",
+                ],
+            },
+            {
+                "@type": "WebSite",
+                name: siteConfig.name,
+                url: defaultSiteUrl,
+                inLanguage: "en",
+            },
         ],
     };
 }

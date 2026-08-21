@@ -127,6 +127,7 @@ export default function ContactPage() {
                         href={item.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={item.label}
                         className="flex items-center justify-center w-11 h-11 rounded-xl bg-secondary/60 text-[var(--brand-orange)] transition-colors hover:bg-[var(--brand-orange)] hover:text-white"
                         title={item.label}
                       >
@@ -135,7 +136,6 @@ export default function ContactPage() {
                     );
                   })}
                 </div>
-                <p className="mt-3 text-xs text-muted-foreground/60">Social links coming soon</p>
               </div>
             </div>
           </FadeIn>

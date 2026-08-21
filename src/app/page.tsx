@@ -58,15 +58,14 @@ import {
 } from "@/content/company";
 import { faqItems } from "@/content/faq";
 import { productSeries } from "@/content/products";
-// siteConfig import removed; not used in this page
 import { stats } from "@/content/stats";
 import { systemFlow } from "@/content/technology";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Fedho Power Solution PLC | Reliable Hybrid Power Solutions",
+  title: "Fedho Power Solution PLC | Hybrid Power & Clean Energy Solutions",
   description:
-    "Discover locally assembled FP Hybrid Generators from 2KW to 600KW designed for homes, businesses, institutions, and industrial operations.",
+    "Fedho Power Solution PLC builds silent hybrid power systems in Ethiopia, combining solar energy, battery storage, grid charging, and intelligent power management.",
   path: "/",
 });
 
