@@ -29,7 +29,6 @@ import {
 } from "@/components/motion/motion";
 import {
   AbstractCurve,
-  DiagonalCurve,
   InvertedWave,
   LayeredWave,
   OrganicCurve,
@@ -153,7 +152,6 @@ export default function HomePage() {
             </div>
           </FadeIn>
         </div>
-        <DiagonalCurve fill="var(--brand-blue)" />
       </Section>
 
       {/* ===== STATS — Full-width dark band ===== */}
